@@ -11,6 +11,7 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "gray-matter": "^4.0.3",
     "next": "15.1.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
@@ -34,6 +35,10 @@
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,json,css}": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "src/contents/**/*.{mdx,md}": [
       "prettier --write",
       "eslint --fix"
     ]
