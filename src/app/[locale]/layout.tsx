@@ -1,3 +1,6 @@
+import { Metadata } from 'next';
+import siteMetadata from '@/contents/siteMetadata';
+import { title, description } from '@/contents/siteLocaleMetadata';
 import { Geist, Geist_Mono } from 'next/font/google';
 import '../globals.css';
 import { locales } from '@/i18n/i18nLocales';
@@ -16,6 +19,23 @@ const geistMono = Geist_Mono({
 
 export async function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: LocaleTypes }>;
+}): Promise<Metadata> {
+  const locale = (await params).locale;
+
+  return {
+    metadataBase: new URL(siteMetadata.siteUrl),
+    title: {
+      default: title[locale],
+      template: `%s | ${title[locale]}`,
+    },
+    description: description[locale],
+  };
 }
 
 export default async function RootLayout({
