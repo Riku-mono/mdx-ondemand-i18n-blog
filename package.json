@@ -8,17 +8,23 @@
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --write './**/*.{js,jsx,ts,tsx,json,css}'",
-    "prepare": "husky"
+    "prepare": "husky",
+    "updateContent": "contentlayer2 build --clearCache"
   },
   "dependencies": {
     "@next/bundle-analyzer": "^15.1.6",
     "contentlayer2": "^0.5.3",
     "date-fns": "^4.1.0",
     "gray-matter": "^4.0.3",
+    "i18next": "^24.2.2",
+    "i18next-browser-languagedetector": "^8.0.2",
+    "i18next-resources-to-backend": "^1.2.1",
     "next": "15.1.6",
     "next-contentlayer2": "^0.5.3",
+    "next-i18n-router": "^5.5.1",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "react-i18next": "^15.4.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
