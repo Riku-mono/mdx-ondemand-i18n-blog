@@ -6,6 +6,7 @@ type FrontMatter = {
   published: boolean;
   icon?: string;
   title: string;
+  description?: string;
   date: string;
   lastupdated?: string;
   categories: string[];
@@ -16,13 +17,20 @@ const ALLOWED_KEYS: (keyof FrontMatter)[] = [
   'published',
   'icon',
   'title',
+  'description',
   'date',
   'lastupdated',
   'categories',
   'tags',
 ];
 
-const REQUIRED_KEYS: (keyof FrontMatter)[] = ['published', 'title', 'date', 'categories'];
+const REQUIRED_KEYS: (keyof FrontMatter)[] = [
+  'published',
+  'title',
+  'description',
+  'date',
+  'categories',
+];
 
 // `YYYY-MM-DDTHH:mm:ss+09:00`
 const ISO_DATE_REGEX = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\+\d{2}:\d{2}$/;

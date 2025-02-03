@@ -1,22 +1,78 @@
-import { defineDocumentType, makeSource } from 'contentlayer2/source-files';
+import { ComputedFields, defineDocumentType, makeSource } from 'contentlayer2/source-files';
+import siteMetadata from './src/contents/siteMetadata';
+
+// const root = process.cwd();
+// const isProduction = process.env.NODE_ENV === 'production';
+
+const computedFields: ComputedFields = {
+  slug: {
+    type: 'string',
+    resolve: (doc) => {
+      const pathParts = doc._raw.flattenedPath.split('/');
+      return pathParts[pathParts.length - 1];
+    },
+  },
+  language: {
+    type: 'string',
+    resolve: (doc) => {
+      const pathParts = doc._raw.flattenedPath.split('/');
+      return pathParts[pathParts.length - 2];
+    },
+  },
+  path: {
+    type: 'string',
+    resolve: (doc) => doc._raw.flattenedPath,
+  },
+  filePath: {
+    type: 'string',
+    resolve: (doc) => doc._raw.sourceFilePath,
+  },
+};
 
 export const Post = defineDocumentType(() => ({
   name: 'Post',
-  filePathPattern: `**/*.md`,
-  bodyType: 'markdown',
+  filePathPattern: `posts/**/*.mdx`,
+  contentType: 'mdx',
   fields: {
-    title: {
-      type: 'string',
-      required: true,
-    },
-    date: {
-      type: 'string',
-      required: true,
-    },
+    published: { type: 'boolean', required: true },
+    icon: { type: 'string' },
+    title: { type: 'string', required: true },
+    description: { type: 'string', required: true },
+    date: { type: 'string', required: true },
+    lastupdated: { type: 'string' },
+    categories: { type: 'list', of: { type: 'string' }, default: [], required: true },
+    tags: { type: 'list', of: { type: 'string' }, default: [] },
   },
   computedFields: {
-    url: { type: 'string', resolve: (post) => `posts/${post._raw.flattenedPath}` },
+    ...computedFields,
+
+    structuredData: {
+      type: 'json',
+      resolve: (doc) => {
+        return {
+          '@context': 'https://schema.org',
+          '@type': 'BlogPosting',
+          headline: doc.title,
+          datePublished: doc.date,
+          dateModified: doc.lastupdated || doc.date,
+          image: doc.icon ? doc.icon : '',
+          url: `${siteMetadata.siteUrl}/${doc.language}/${doc.slug}`,
+        };
+      },
+    },
   },
 }));
 
-export default makeSource({ contentDirPath: 'src/contents/posts', documentTypes: [Post] });
+export const Category = defineDocumentType(() => ({
+  name: 'Category',
+  filePathPattern: 'categories/**/*.yaml',
+  bodyType: 'yaml',
+  fields: {
+    title: { type: 'string', required: true },
+    icon: { type: 'string', required: true },
+    className: { type: 'string', required: true },
+  },
+  computedFields,
+}));
+
+export default makeSource({ contentDirPath: 'src/contents/', documentTypes: [Post, Category] });
