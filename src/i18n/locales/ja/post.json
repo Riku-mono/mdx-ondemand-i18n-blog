@@ -1,4 +1,7 @@
 {
   "notTranslated": "このコンテンツはまだ、",
-  "version": "版ではご利用頂けません"
+  "tableOfContents": "目次",
+  "backToTop": "ページの先頭へ",
+  "backToHome": "ホームへ戻る",
+  "editPage": "GitHub で編集"
 }

@@ -48,12 +48,12 @@ export default async function RootLayout({
   const locale = (await params).locale;
 
   return (
-    <html lang={locale} dir={dir(locale)}>
+    <html lang={locale} dir={dir(locale)} className="scroll-smooth">
       <body
         className={`${geistSans.variable} ${geistMono.variable} flex min-h-screen flex-col bg-background font-sans antialiased`}
       >
         <main className="relative flex flex-1 flex-col gap-4 overflow-x-hidden p-4 md:gap-8 md:px-10">
-          {children}
+          <main className="relative flex flex-1 flex-col gap-4 md:gap-8">{children}</main>
         </main>
       </body>
     </html>
