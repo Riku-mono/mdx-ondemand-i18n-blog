@@ -1,11 +1,14 @@
 import Link from 'next/link';
-import { Category } from 'contentlayer/generated';
+import { allCategories, Category } from 'contentlayer/generated';
 
 interface CategoryCardProps {
-  category: Category;
+  slug: string;
+  locale: string;
 }
 
-export const CategoryCard = ({ category }: CategoryCardProps) => {
+export const CategoryCard = ({ slug, locale }: CategoryCardProps) => {
+  const category = allCategories.find((c) => c.slug === slug && c.language === locale) as Category;
+
   return (
     <Link
       href={`/${category.language}/categories/${category.slug}`}

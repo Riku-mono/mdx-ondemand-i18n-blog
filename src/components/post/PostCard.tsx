@@ -1,17 +1,13 @@
-import { Category, Post } from 'contentlayer/generated';
+import { Post } from 'contentlayer/generated';
 import { CategoryCard } from '../category/CategoryCard';
 
 export type PostCardProps = {
   post: Post & { isFallback?: boolean };
-  categories: Category[];
   locale: string;
 };
 
-export const PostCard = ({ post, categories = [], locale }: PostCardProps) => {
+export const PostCard = ({ post, locale }: PostCardProps) => {
   const displayNames = new Intl.DisplayNames([locale], { type: 'language' });
-  const postCategories = (post.categories || []).map((category) => {
-    return categories.find((c) => c.slug === category);
-  });
 
   return (
     <article className="animate-in fade-in-0 flex flex-row items-center gap-2 rounded-xl p-4 duration-1000 ease-out hover:bg-gray-800">
@@ -21,10 +17,9 @@ export const PostCard = ({ post, categories = [], locale }: PostCardProps) => {
       <div className="my-1 flex flex-col gap-2 sm:gap-3">
         <header>
           <div className="flex flex-row flex-wrap gap-2">
-            {postCategories &&
-              postCategories.map(
-                (category) => category && <CategoryCard key={category.slug} category={category} />
-              )}
+            {post.categories.map((category) => (
+              <CategoryCard key={category} slug={category} locale={locale} />
+            ))}
           </div>
         </header>
         <a href={`/${locale}/posts/${post.slug}`}>
