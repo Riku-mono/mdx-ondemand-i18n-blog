@@ -41,6 +41,13 @@ function validatePost(postPath: string): string[] {
 
   const errors: string[] = [];
 
+  // Check if filePath is mutch url pattern
+  const fileName = postPath.split('/').pop();
+  const slug = fileName?.replace('.mdx', '');
+  if (slug?.includes(' ')) {
+    errors.push('❌ filePath is not match url pattern');
+  }
+
   // Check if all required keys are present
   REQUIRED_KEYS.forEach((key) => {
     if (!frontmatter[key]) {
