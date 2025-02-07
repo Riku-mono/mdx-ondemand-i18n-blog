@@ -1,0 +1,28 @@
+'use client';
+
+import { FC, useEffect } from 'react';
+import * as tocbot from 'tocbot';
+
+interface Props {
+  onClick?: (e: Event) => void;
+}
+
+export const TableOfContents: FC<Props> = ({ onClick }) => {
+  useEffect(() => {
+    tocbot.init({
+      tocSelector: '.toc',
+      contentSelector: '.mdx-post', // 目次を抽出したい要素のクラス名
+      headingSelector: 'h1, h2, h3, h4, h5',
+      scrollSmooth: false,
+      activeLinkClass: 'is-active-link',
+      includeHtml: false,
+      tocScrollOffset: 30,
+      disableTocScrollSync: true,
+      ...(onClick && { onClick }),
+    });
+
+    return () => tocbot.destroy();
+  }, []);
+
+  return <nav className="toc" />;
+};

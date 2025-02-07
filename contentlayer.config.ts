@@ -1,5 +1,8 @@
 import { ComputedFields, defineDocumentType, makeSource } from 'contentlayer2/source-files';
 import siteMetadata from './src/contents/siteMetadata';
+import remarkGfm from 'remark-gfm';
+import rehypeSlug from 'rehype-slug';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 
 // const root = process.cwd();
 // const isProduction = process.env.NODE_ENV === 'production';
@@ -75,4 +78,27 @@ export const Category = defineDocumentType(() => ({
   computedFields,
 }));
 
-export default makeSource({ contentDirPath: 'src/contents/', documentTypes: [Post, Category] });
+export default makeSource({
+  contentDirPath: 'src/contents/',
+  documentTypes: [Post, Category],
+  mdx: {
+    remarkPlugins: [remarkGfm],
+    rehypePlugins: [
+      rehypeSlug,
+      [
+        rehypeAutolinkHeadings,
+        {
+          behavior: 'prepend',
+          headingProperties: {
+            className: ['content-header'],
+          },
+          content: {
+            type: 'element',
+            tagName: 'span',
+            properties: { className: ['content-header-icon'] },
+          },
+        },
+      ],
+    ],
+  },
+});

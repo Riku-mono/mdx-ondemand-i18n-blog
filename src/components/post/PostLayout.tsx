@@ -1,0 +1,116 @@
+import Link from 'next/link';
+import siteMetadata from '@/contents/siteMetadata';
+import { LocaleTypes } from '@/i18n/i18nConfig';
+import { createTranslation } from '@/i18n/i18nServer';
+import { Post } from 'contentlayer/generated';
+import { CategoryCard } from '@/components/category/CategoryCard';
+import { TableOfContents } from '@/components/mdx/toc/TableOfContents';
+import { MobileTableOfContentsButton } from '@/components/mdx/toc/MobileTableOfContentsButton';
+import SubHeaderLayout from '@/components/navigation/SubHeaderLayout';
+import { datetimeToLocaleString } from '@/lib/datetime';
+
+interface PostLayoutProps {
+  children: React.ReactNode;
+  post: Post;
+  locale: LocaleTypes;
+  isFallback: boolean;
+}
+
+export default async function PostLayout({ children, post, locale, isFallback }: PostLayoutProps) {
+  const { slug, icon, title, date, lastupdated, categories, tags } = post;
+  const { t } = await createTranslation(locale, 'post');
+
+  const displayNames = new Intl.DisplayNames([locale], { type: 'language' });
+  const githubRepoUrl = siteMetadata.siteRepo;
+  const githubEditUrl = `${githubRepoUrl}/edit/main/src/contents/posts/${locale}/${slug}`;
+  const postedOn = datetimeToLocaleString(new Date(date), locale);
+  const updatedOn = lastupdated ? datetimeToLocaleString(new Date(lastupdated), locale) : postedOn;
+
+  return (
+    <article className="mx-auto w-full">
+      <SubHeaderLayout mbOnly>
+        <a className="text-lg font-bold" href={`/${locale}/posts`}>
+          {'< .../'}
+          {slug}
+        </a>
+        <MobileTableOfContentsButton />
+      </SubHeaderLayout>
+      <header className="mx-auto my-8 max-w-screen-xl space-y-4 px-4 text-center md:space-y-8 md:px-10">
+        {icon && <p className="mb-2 text-4xl">{icon}</p>}
+        <h1 className="text-3xl font-bold md:text-4xl">{title}</h1>
+        <div className="flex flex-wrap items-center justify-center gap-2 text-right">
+          {categories.map((category) => (
+            <CategoryCard key={category} slug={category} locale={locale} />
+          ))}
+          <p className="text-md text-zinc-500 dark:text-zinc-200">/</p>
+          {tags.map((tag) => (
+            <Link
+              key={tag}
+              href={`/${locale}/tags/${tag}`}
+              className="bg-default hover:bg-muted group flex flex-row items-center gap-1 rounded-lg bg-zinc-50 px-4 py-2 font-mono text-xs transition hover:bg-zinc-200 dark:bg-zinc-900 dark:hover:bg-zinc-800"
+            >
+              <span className="font-bold">#</span>
+              <span className="group-hover:underline">{tag}</span>
+            </Link>
+          ))}
+        </div>
+        <div className="text-md grid grid-cols-1 gap-4 py-2 font-bold lg:grid-cols-3 lg:py-8">
+          <div className="flex items-center justify-center gap-2 px-2 lg:flex-col">
+            <p>{t('postedOn')}</p>
+            <time dateTime={date}>{postedOn}</time>
+          </div>
+          <div className="flex items-center justify-center gap-2 px-2 lg:flex-col">
+            <p>{t('updated')}</p>
+            <time dateTime={date}>{updatedOn}</time>
+          </div>
+          <div className="flex items-center justify-center gap-2 px-2 lg:flex-col">
+            <p>{t('readTime')}</p>
+            <p>約 n 分</p>
+          </div>
+        </div>
+        {/* <p>Revalidated at: {new Date().toLocaleString()}</p> */}
+
+        {isFallback && (
+          <div className="mb-2 rounded-md border bg-red-200 p-2 text-sm text-red-700">
+            ※ {t('notTranslated')} {displayNames.of(locale)} {t('version')}.
+          </div>
+        )}
+      </header>
+      <div className="mx-auto flex max-w-screen-xl justify-between px-8 md:px-10">
+        <div className="mdx-post prose prose-neutral max-w-none dark:prose-invert">{children}</div>
+        <aside>
+          <div className="ml-4 hidden h-full w-80 lg:block">
+            <div className="sticky top-10">
+              <div className="rounded-lg bg-zinc-100 p-4 dark:bg-zinc-900">
+                <h2 className="mb-2 text-lg font-bold">{t('tableOfContents')}</h2>
+                <TableOfContents />
+              </div>
+              <a
+                href="#"
+                className="mt-2 flex flex-row items-center rounded-lg border px-4 py-2 text-sm transition hover:underline"
+              >
+                {t('backToTop')}
+              </a>
+              <a
+                href={githubEditUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-2 flex flex-row items-center rounded-lg border px-4 py-2 text-sm transition hover:underline"
+              >
+                {t('editPage')}
+              </a>
+            </div>
+          </div>
+        </aside>
+      </div>
+      <div className="mx-auto flex max-w-screen-xl flex-wrap py-4">
+        <Link
+          href={`/${locale}`}
+          className="flex flex-row items-center rounded-lg px-4 py-2 text-sm transition hover:underline"
+        >
+          {'<'} {t('backToHome')}
+        </Link>
+      </div>
+    </article>
+  );
+}

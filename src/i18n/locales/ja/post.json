@@ -1,5 +1,10 @@
 {
+  "postedOn": "投稿日",
+  "updated": "更新日",
+  "readTime": "読了時間",
+  "posts": "記事一覧",
   "notTranslated": "このコンテンツはまだ、",
+  "version": "版ではご利用頂けません",
   "tableOfContents": "目次",
   "backToTop": "ページの先頭へ",
   "backToHome": "ホームへ戻る",
