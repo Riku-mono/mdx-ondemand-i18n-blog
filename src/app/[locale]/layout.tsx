@@ -1,11 +1,12 @@
 import { Metadata } from 'next';
+import { ThemeProvider } from 'next-themes';
 import siteMetadata from '@/contents/siteMetadata';
 import { title, description } from '@/contents/siteLocaleMetadata';
+import { dir } from 'i18next';
+import { locales } from '@/i18n/i18nLocales';
+import { LocaleTypes } from '@/i18n/i18nConfig';
 import { Geist, Geist_Mono } from 'next/font/google';
 import '../globals.css';
-import { locales } from '@/i18n/i18nLocales';
-import { dir } from 'i18next';
-import { LocaleTypes } from '@/i18n/i18nConfig';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -48,13 +49,18 @@ export default async function RootLayout({
   const locale = (await params).locale;
 
   return (
-    <html lang={locale} dir={dir(locale)} className="scroll-smooth">
+    <html lang={locale} dir={dir(locale)} className="scroll-smooth" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} flex min-h-screen flex-col bg-background font-sans antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} flex min-h-screen flex-col bg-background font-sans text-foreground antialiased`}
       >
-        <main className="relative flex flex-1 flex-col gap-4 overflow-x-hidden p-4 md:gap-8 md:px-10">
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
           <main className="relative flex flex-1 flex-col gap-4 md:gap-8">{children}</main>
-        </main>
+        </ThemeProvider>
       </body>
     </html>
   );
