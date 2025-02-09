@@ -7,6 +7,8 @@ import { locales } from '@/i18n/i18nLocales';
 import { LocaleTypes } from '@/i18n/i18nConfig';
 import { Geist, Geist_Mono, Noto_Sans_JP } from 'next/font/google';
 import '../globals.css';
+import Header from '@/components/navigation/Header';
+import Footer from '@/components/navigation/Footer';
 
 const notoSansJP = Noto_Sans_JP({
   variable: '--font-noto-sans-jp',
@@ -64,7 +66,9 @@ export default async function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <Header />
           <main className="relative flex-1">{children}</main>
+          <Footer />
         </ThemeProvider>
       </body>
     </html>
