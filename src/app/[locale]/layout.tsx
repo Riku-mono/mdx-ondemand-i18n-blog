@@ -64,7 +64,7 @@ export default async function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <main className="relative flex flex-1 flex-col gap-4 md:gap-8">{children}</main>
+          <main className="relative flex-1">{children}</main>
         </ThemeProvider>
       </body>
     </html>

@@ -3,6 +3,7 @@ import { createTranslation } from '@/i18n/i18nServer';
 import { PostCard } from '@/components/post/PostCard';
 import { getPostsForLocale } from '@/lib/post';
 import { LATEST_POSTS_PER_PAGE } from '@/lib/constants';
+import { PageLayout } from '@/components/layouts/PageLayout';
 
 interface PageProps {
   params: Promise<{ locale: LocaleTypes }>;
@@ -15,11 +16,12 @@ export default async function Home({ params }: PageProps) {
   const filteredPosts = await getPostsForLocale(locale);
 
   return (
-    <div className="mx-auto grid w-full max-w-7xl gap-4 px-4 md:px-10">
-      <div className="row-start-2 flex flex-col gap-8">
-        <h1 className="text-4xl font-bold">{t('hello')}</h1>
-        <h1 className="text-4xl font-bold">{t('latestPosts')}</h1>
-        <section className="grid w-full grid-cols-1 gap-8 rounded-lg border p-4">
+    <PageLayout>
+      <div className="grid gap-8">
+        <h2 className="text-4xl font-bold">{t('about us')}</h2>
+        <section className="grid w-full grid-cols-1 gap-8 rounded-xl border-2 border-border p-4"></section>
+        <h2 className="text-4xl font-bold">{t('latestPosts')}</h2>
+        <section className="grid w-full grid-cols-1 gap-8 rounded-xl border-2 border-border p-4">
           <ul className="grid grid-cols-1 gap-4 lg:grid-cols-2">
             {filteredPosts.slice(0, LATEST_POSTS_PER_PAGE).map((post) => (
               <li key={post.slug}>
@@ -29,12 +31,14 @@ export default async function Home({ params }: PageProps) {
           </ul>
           <a
             href={`/${locale}/posts`}
-            className="flex w-full justify-center rounded-md border p-2 hover:bg-slate-400"
+            className="flex w-full justify-center rounded-md border-2 border-border bg-card p-2 hover:underline"
           >
             {t('viewAllPosts')}
           </a>
         </section>
+        <h2 className="text-4xl font-bold">{t('contact')}</h2>
+        <section className="grid w-full grid-cols-1 gap-8 rounded-xl border-2 border-border p-4"></section>
       </div>
-    </div>
+    </PageLayout>
   );
 }

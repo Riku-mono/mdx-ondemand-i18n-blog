@@ -4,7 +4,11 @@
 import React, { useState } from 'react';
 import { TableOfContents } from './TableOfContents';
 
-export const MobileTableOfContentsButton = () => {
+interface Props {
+  title: string;
+}
+
+export const MobileTableOfContentsButton = ({ title }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleClick = () => {
@@ -13,11 +17,12 @@ export const MobileTableOfContentsButton = () => {
 
   return (
     <div className="mb-toc relative">
-      <button className="rounded-l-lg bg-zinc-200 p-2 dark:bg-zinc-900" onClick={handleClick}>
+      <button className="p-2" onClick={handleClick}>
         {isOpen ? 'Close' : 'Open'}
       </button>
       {isOpen && (
-        <div className="absolute -right-4 w-screen rounded-b-lg bg-zinc-200 p-4 dark:bg-zinc-900">
+        <div className="absolute -right-4 w-screen rounded-b-lg bg-card p-4">
+          <h2 className="mb-2 pl-2 text-xl font-bold">{title}</h2>
           <TableOfContents onClick={handleClick} />
         </div>
       )}

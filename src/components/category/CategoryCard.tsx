@@ -12,10 +12,10 @@ export const CategoryCard = ({ slug, locale }: CategoryCardProps) => {
   return (
     <Link
       href={`/${category.language}/categories/${category.slug}`}
-      className={`flex flex-row items-center gap-1 rounded-md bg-blue-500 px-2.5 py-1 text-sm font-bold text-white transition hover:bg-blue-400 sm:px-4 sm:text-base ${category.className}`}
+      className={`flex flex-row items-center gap-1 rounded-md px-2.5 py-1 text-sm font-bold text-neutral-100 transition sm:px-4 sm:text-base ${category.className}`}
     >
-      <div>{category.icon}</div>
-      <div>{category.title}</div>
+      <span>{category.icon}</span>
+      <span>{category.title}</span>
     </Link>
   );
 };

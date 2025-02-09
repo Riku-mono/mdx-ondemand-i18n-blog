@@ -27,27 +27,27 @@ export default async function PostLayout({ children, post, locale, isFallback }:
   const updatedOn = lastupdated ? datetimeToLocaleString(new Date(lastupdated), locale) : postedOn;
 
   return (
-    <article className="mx-auto w-full">
+    <article className="mx-auto w-full space-y-8 md:space-y-10">
       <SubHeaderLayout mbOnly>
-        <a className="text-lg font-bold" href={`/${locale}/posts`}>
+        <a className="text-sm font-bold" href={`/${locale}/posts`}>
           {'< .../'}
           {slug}
         </a>
-        <MobileTableOfContentsButton />
+        <MobileTableOfContentsButton title={t('tableOfContents')} />
       </SubHeaderLayout>
-      <header className="mx-auto my-8 max-w-screen-xl space-y-4 px-4 text-center md:space-y-8 md:px-10">
+      <header className="mx-auto max-w-screen-xl space-y-4 px-4 text-center md:space-y-8 md:px-10">
         {icon && <p className="mb-2 text-4xl">{icon}</p>}
-        <h1 className="text-3xl font-bold md:text-4xl">{title}</h1>
+        <h1 className="text-3xl font-black md:text-4xl">{title}</h1>
         <div className="flex flex-wrap items-center justify-center gap-2 text-right">
           {categories.map((category) => (
             <CategoryCard key={category} slug={category} locale={locale} />
           ))}
-          <p className="text-md text-zinc-500 dark:text-zinc-200">/</p>
+          <p className="text-md text-muted">/</p>
           {tags.map((tag) => (
             <Link
               key={tag}
               href={`/${locale}/tags/${tag}`}
-              className="bg-default hover:bg-muted group flex flex-row items-center gap-1 rounded-lg bg-zinc-50 px-4 py-2 font-mono text-xs transition hover:bg-zinc-200 dark:bg-zinc-900 dark:hover:bg-zinc-800"
+              className="bg-default group flex flex-row items-center gap-1 rounded-lg bg-card px-4 py-2 font-mono text-xs transition"
             >
               <span className="font-bold">#</span>
               <span className="group-hover:underline">{tag}</span>
@@ -71,23 +71,25 @@ export default async function PostLayout({ children, post, locale, isFallback }:
         {/* <p>Revalidated at: {new Date().toLocaleString()}</p> */}
 
         {isFallback && (
-          <div className="mb-2 rounded-md border bg-red-200 p-2 text-sm text-red-700">
+          <div className="mb-2 rounded-md border bg-red-200 p-2 text-sm text-destructive">
             ※ {t('notTranslated')} {displayNames.of(locale)} {t('version')}.
           </div>
         )}
       </header>
-      <div className="mx-auto flex max-w-screen-xl justify-between px-8 md:px-10">
-        <div className="mdx-post prose prose-neutral max-w-none dark:prose-invert">{children}</div>
-        <aside>
-          <div className="ml-4 hidden h-full w-80 lg:block">
-            <div className="sticky top-10">
-              <div className="rounded-lg bg-zinc-100 p-4 dark:bg-zinc-900">
+      <div className="mx-auto grid max-w-screen-xl grid-cols-7 gap-4 px-8 md:px-10">
+        <div className="mdx-post prose prose-neutral col-span-7 max-w-none dark:prose-invert lg:col-span-5">
+          {children}
+        </div>
+        <aside className="col-span-2 col-end-8 hidden h-full lg:flex">
+          <div className="w-full">
+            <div className="sticky top-10 space-y-2">
+              <div className="rounded-lg bg-card p-4">
                 <h2 className="mb-2 text-lg font-bold">{t('tableOfContents')}</h2>
                 <TableOfContents />
               </div>
               <a
                 href="#"
-                className="mt-2 flex flex-row items-center rounded-lg border px-4 py-2 text-sm transition hover:underline"
+                className="flex flex-row items-center rounded-lg border px-4 py-2 text-sm transition hover:underline"
               >
                 {t('backToTop')}
               </a>
@@ -95,7 +97,7 @@ export default async function PostLayout({ children, post, locale, isFallback }:
                 href={githubEditUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-2 flex flex-row items-center rounded-lg border px-4 py-2 text-sm transition hover:underline"
+                className="flex flex-row items-center rounded-lg border px-4 py-2 text-sm transition hover:underline"
               >
                 {t('editPage')}
               </a>
