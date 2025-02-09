@@ -18,10 +18,11 @@ export async function generateMetadata({
   params: Promise<{ locale: LocaleTypes }>;
 }): Promise<Metadata> {
   const { locale } = await params;
+  const { t } = await createTranslation(locale, 'post');
 
   return {
-    title: 'Posts',
-    description: `Posts for ${locale}`,
+    title: t('categories'),
+    description: `${t('categories')} ${locale}`,
   };
 }
 

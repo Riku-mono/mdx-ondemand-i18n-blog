@@ -12,7 +12,7 @@ export const getCategoriesForLocale = async (locale: LocaleTypes) => {
 /**
  * category の slug と locale に応じた category を取得する
  */
-export const getCategory = async (slug: string, locale: LocaleTypes) => {
+export const getCategoryForLocale = async (slug: string, locale: LocaleTypes) => {
   const categories = await getCategoriesForLocale(locale);
   const category = categories.find((category) => category.slug === slug);
 
