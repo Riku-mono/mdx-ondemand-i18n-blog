@@ -1,6 +1,6 @@
 .content-header-icon {
   opacity: 0;
-  margin-left: -24px;
+  margin-left: -18px;
   padding-right: 8px;
   transition: opacity 0.2s ease-in-out;
 }
@@ -37,7 +37,6 @@
         display: block;
         position: relative;
         text-decoration: none;
-        color: var(--foreground);
         padding: 4px 8px;
         border-radius: 4px;
         transition: background 0.2s ease-in-out;
@@ -64,11 +63,38 @@
           background: var(--background);
 
           &::before {
-            background: #facc15;
+            background: var(--accent);
             transition: background ease-in-out 0.2s;
           }
         }
       }
+    }
+  }
+}
+
+.post-archive {
+  position: relative;
+  padding-left: 24px;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--accent);
+  }
+  .post-month-title {
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      top: 10px;
+      left: -30px;
+      width: 16px;
+      height: 16px;
+      background: var(--accent);
+      border-radius: 50%;
     }
   }
 }
