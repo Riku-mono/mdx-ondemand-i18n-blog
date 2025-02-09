@@ -1,0 +1,4 @@
+title: '뉴스'
+description: '사이트 또는 프로젝트에 관한 `뉴스`를 모아두었습니다'
+icon: '📢'
+className: 'bg-blue-500 hover:bg-blue-400'

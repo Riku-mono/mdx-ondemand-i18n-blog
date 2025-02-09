@@ -1,0 +1,4 @@
+title: 'News'
+description: 'A collection of `news` about the site and projects'
+icon: '📢'
+className: 'bg-blue-500 hover:bg-blue-400'
