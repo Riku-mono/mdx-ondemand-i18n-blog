@@ -1,3 +1,4 @@
 title: '活動'
+description: '`活動` に関連する記録や情報をまとめています'
 icon: '✨'
-className: 'bg-blue-500 hover:bg-blue-400'
+className: 'bg-teal-600 hover:bg-teal-500'

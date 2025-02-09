@@ -1,3 +1,4 @@
 title: '활동'
+description: '`활동` 에 관련된 기록 및 정보를 요약했습니다'
 icon: '✨'
-className: 'bg-blue-500 hover:bg-blue-400'
+className: 'bg-teal-600 hover:bg-teal-500'
