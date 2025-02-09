@@ -10,7 +10,7 @@ export default {
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
-  safelist: ['hover:bg-teal-500', 'bg-teal-600'],
+  safelist: ['hover:bg-teal-500', 'bg-teal-600', 'hover:bg-amber-400', 'bg-amber-500'],
   theme: {
     extend: {
       colors: {

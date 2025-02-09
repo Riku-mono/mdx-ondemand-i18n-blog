@@ -1,0 +1,4 @@
+title: 'Events'
+description: 'Records and information related to `events` organized or participated in'
+icon: '🎉'
+className: 'bg-amber-500 hover:bg-amber-400'

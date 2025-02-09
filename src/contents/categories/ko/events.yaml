@@ -1,0 +1,4 @@
+title: '이벤트'
+description: '주최 또는 참여한 `이벤트`에 관련된 기록 및 정보'
+icon: '🎉'
+className: 'bg-amber-500 hover:bg-amber-400'
