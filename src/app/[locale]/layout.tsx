@@ -6,7 +6,7 @@ import { dir } from 'i18next';
 import { locales } from '@/i18n/i18nLocales';
 import { LocaleTypes } from '@/i18n/i18nConfig';
 import { Geist, Geist_Mono, Noto_Sans_JP } from 'next/font/google';
-import '../globals.css';
+import '../../styles/globals.css';
 import Header from '@/components/navigation/Header';
 import Footer from '@/components/navigation/Footer';
 
@@ -56,7 +56,12 @@ export default async function RootLayout({
   const locale = (await params).locale;
 
   return (
-    <html lang={locale} dir={dir(locale)} className="scroll-smooth" suppressHydrationWarning>
+    <html
+      lang={locale}
+      dir={dir(locale)}
+      className="scroll-pt-16 scroll-smooth lg:scroll-pt-4"
+      suppressHydrationWarning
+    >
       <body
         className={`${geistSans.className} ${geistMono.className} ${notoSansJP.className} flex min-h-screen flex-col bg-background text-primary antialiased`}
       >
