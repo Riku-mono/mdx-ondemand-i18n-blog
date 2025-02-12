@@ -3,8 +3,10 @@ import siteMetadata from './src/contents/siteMetadata';
 import remarkGfm from 'remark-gfm';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import rehypePrettyCode from 'rehype-pretty-code';
+import { transformerNotationDiff, transformerNotationWordHighlight } from '@shikijs/transformers';
 
-// const root = process.cwd();
+const root = process.cwd();
 // const isProduction = process.env.NODE_ENV === 'production';
 
 const computedFields: ComputedFields = {
@@ -72,6 +74,7 @@ export const Category = defineDocumentType(() => ({
   bodyType: 'yaml',
   fields: {
     title: { type: 'string', required: true },
+    description: { type: 'string', required: true },
     icon: { type: 'string', required: true },
     className: { type: 'string', required: true },
   },
@@ -80,8 +83,9 @@ export const Category = defineDocumentType(() => ({
 
 export default makeSource({
   contentDirPath: 'src/contents/',
-  documentTypes: [Post, Category],
+  contentDirExclude: ['siteMetadata.ts', 'siteLocaleMetadata.ts', 'components/**/*'],
   mdx: {
+    cwd: root,
     remarkPlugins: [remarkGfm],
     rehypePlugins: [
       rehypeSlug,
@@ -97,6 +101,24 @@ export default makeSource({
             tagName: 'span',
             properties: { className: ['content-header-icon'] },
           },
+          test: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
+        },
+      ],
+      // rehypeCodeTitles,
+      // [rehypePrism, { ignoreMissing: true, defaultLanguage: 'markup' }],
+      [
+        rehypePrettyCode,
+        {
+          theme: {
+            dark: 'one-dark-pro',
+            light: 'catppuccin-latte',
+          },
+          keepBackground: false,
+          defaultLanguage: 'plaintext',
+          transformers: [
+            transformerNotationDiff({ matchAlgorithm: 'v3' }),
+            transformerNotationWordHighlight({ matchAlgorithm: 'v3' }),
+          ],
         },
       ],
     ],

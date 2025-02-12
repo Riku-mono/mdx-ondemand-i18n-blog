@@ -9,6 +9,7 @@ export default {
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/contents/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   safelist: [
     'hover:bg-teal-500',
@@ -66,8 +67,10 @@ export default {
               },
               code: { color: theme('colors.typoPrimary.400') },
             },
-            'h2, h3': {
+            'h1, h2, h3': {
               fontWeight: '700',
+              paddingBottom: theme('padding.2'),
+              borderBottomWidth: theme('borderWidth.DEFAULT'),
               letterSpacing: theme('letterSpacing.tight'),
             },
             h4: {
@@ -79,9 +82,19 @@ export default {
               padding: theme('spacing.1'),
               borderRadius: theme('borderRadius.DEFAULT'),
               borderWidth: '1.5px',
-              fontSize: theme('fontSize.xs'),
+              fontSize: theme('fontSize.sm'),
               borderColor: theme('colors.border'),
             },
+            pre: false,
+            'pre code': {
+              color: 'inherit',
+              backgroundColor: 'inherit',
+              padding: '0',
+              borderRadius: '0',
+              borderColor: 'inherit',
+            },
+            'code::before': false,
+            'code::after': false,
           },
         },
         invert: {

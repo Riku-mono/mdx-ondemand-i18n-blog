@@ -1,0 +1,88 @@
+figure[data-rehype-pretty-code-figure] {
+  @apply mb-2 mt-2 w-full rounded-[--radius] border border-border bg-card;
+}
+
+figure[data-rehype-pretty-code-figure] pre {
+  @apply overflow-x-auto py-4;
+}
+
+figure[data-rehype-pretty-code-figure] [data-line] {
+  @apply mt-0 border-l-2 border-transparent px-4;
+}
+
+[data-highlighted-line] {
+  @apply !border-blue-400 !bg-blue-200/20;
+}
+
+[data-highlighted-chars] {
+  @apply rounded-md border border-border !bg-blue-200/30 px-0.5 py-[0.25];
+}
+
+figcaption[data-rehype-pretty-code-title] {
+  @apply mt-0 border-b border-border px-4 py-2 text-sm text-muted;
+}
+
+figcaption[data-rehype-pretty-code-title] + pre {
+  @apply mt-0;
+}
+
+code[data-line-numbers] {
+  counter-reset: line;
+}
+
+code[data-line-numbers] > [data-line]::before {
+  display: inline-block;
+  width: 0.75rem;
+  margin-right: 1rem;
+  color: gray;
+  text-align: right;
+
+  content: counter(line);
+  counter-increment: line;
+}
+
+code[data-line-numbers-max-digits='2'] > [data-line]::before {
+  width: 1.25rem;
+}
+
+code[data-line-numbers-max-digits='3'] > [data-line]::before {
+  width: 1.75rem;
+}
+
+code[data-line-numbers-max-digits='4'] > [data-line]::before {
+  width: 2.25rem;
+}
+
+figure[data-rehype-pretty-code-figure] pre.has-diff [data-line]::before {
+  display: inline-block;
+  width: 0.75rem;
+  margin-right: 1rem;
+  text-align: right;
+  content: '';
+}
+
+figure[data-rehype-pretty-code-figure] pre.has-diff [data-line].diff.add {
+  @apply bg-green-200/20 text-green-400 before:content-['+'];
+}
+
+figure[data-rehype-pretty-code-figure] pre.has-diff [data-line].diff.remove {
+  @apply bg-red-200/20 text-red-400 before:content-['-'];
+}
+
+pre[data-theme*=' '],
+code[data-theme*=' '],
+code[data-theme*=' '] span {
+  @apply text-sm;
+  color: var(--shiki-light);
+  background-color: var(--shiki-light-bg);
+}
+
+.dark {
+  pre[data-theme*=' '],
+  code[data-theme*=' '],
+  code[data-theme*=' '] span {
+    @apply text-sm;
+    color: var(--shiki-dark);
+    background-color: var(--shiki-dark-bg);
+  }
+}
