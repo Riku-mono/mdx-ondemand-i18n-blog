@@ -4,14 +4,598 @@ icon: '✍️'
 title: 'MDX サンプル'
 description: '本サイトで使用可能な MDX のサンプルです。'
 date: '2025-02-03T00:00:00+09:00'
+lastupdated: '2025-02-15T23:50:00+09:00'
 categories:
   - 'news'
 tags:
   - 'mdx'
-  - 'sample'
+  - 'サンプル'
 ---
 
 ## 概要
 
-本サイトで使用可能な MDX のサンプルです。
-今後、追加します。
+本サイトで使用可能な MDX のサンプルです。逐次追加していきます。
+
+以下に、MDX 記法を示します。
+
+## 見出し
+
+{/* prettier-ignore */}
+<TwoGridLayout>
+  <div>
+    ```mdx
+    ## 見出し 2
+
+    ### 見出し 3
+
+    #### 見出し 4
+
+    ##### 見出し 5
+
+    ###### 見出し 6
+    ```
+
+  </div>
+  <div>
+    ## 見出し 2
+
+    ### 見出し 3
+
+    #### 見出し 4
+
+    ##### 見出し 5
+
+    ###### 見出し 6
+
+  </div>
+</TwoGridLayout>
+
+見出し1 は使用しません。
+
+SEO ・ ユーザビリティの観点から、見出しは h2 から始めてください。
+また、見出し5 以上は出来るだけ使用しないでください。
+
+## スタイリング
+
+{/* prettier-ignore */}
+<TwoGridLayout>
+  <div>
+    ```mdx
+    **太字**
+    
+    _イタリック_
+    
+    **_太字イタリック_**
+    
+    ~~取り消し線~~
+    
+    `インラインコード`
+    ```
+
+  </div>
+  <div>
+    **太字**
+
+    _イタリック_
+
+    **_太字イタリック_**
+
+    ~~取り消し線~~
+
+    `インラインコード`
+
+  </div>
+</TwoGridLayout>
+
+## リスト
+
+### 箇条書き
+
+{/* prettier-ignore */}
+<TwoGridLayout>
+  <div>
+    ```mdx
+    - アイテム 1
+      - アイテム 1-1
+      - アイテム 1-2
+    - アイテム 2
+        
+        アイテム内のテキスト
+    ```
+
+  </div>
+  <div>
+    - アイテム 1
+      - アイテム 1-1
+      - アイテム 1-2
+    - アイテム 2
+          
+        アイテム内のテキスト
+  </div>
+</TwoGridLayout>
+
+## リンク
+
+### 内部リンク
+
+{/* prettier-ignore */}
+<TwoGridLayout>
+  <div>
+    ```mdx
+    [ホーム](/)
+    ```
+  </div>
+  <div>
+    [ホーム](/)
+  </div>
+</TwoGridLayout>
+
+### 外部リンク
+
+{/* prettier-ignore */}
+<TwoGridLayout>
+  <div>
+    ```mdx
+    [Google](https://google.com)
+    ```
+  </div>
+  <div>
+    [Google](https://google.com)
+  </div>
+</TwoGridLayout>
+
+## 画像
+
+{/* prettier-ignore */}
+<TwoGridLayout>
+  <div>
+    ```mdx
+    ![Dev placeholder Image](/dev-placeholder.png)
+    ```
+  </div>
+  <div>
+    ![Dev placeholder Image](/dev-placeholder.png)
+  </div>
+</TwoGridLayout>
+
+## テーブル
+
+{/* prettier-ignore */}
+<TwoGridLayout>
+  <div>
+    ```mdx
+    | Header 1 | Header 2 | Header 3 |
+    | :------- | :------: | -------: |
+    | 1-1      |   1-2    |      1-3 |
+    | 2-1      |   2-2    |      2-3 |
+    ```
+  </div>
+  <div>
+    | Header 1 | Header 2 | Header 3 |
+    | :------- | :------: | -------: |
+    | 1-1      |   1-2    |      1-3 |
+    | 2-1      |   2-2    |      2-3 |
+  </div>
+</TwoGridLayout>
+
+## コードブロック
+
+### 基本
+
+バッククォート3つで囲むことでコードブロックを記述できます。
+
+対応言語を指定することで、[Shiki](https://shiki.matsu.io/) によるシンタックスハイライトが適用されます。
+
+言語を指定しない場合、プレーンテキストとして表示されます。
+
+{/* prettier-ignore */}
+<TwoGridLayout>
+  <div>
+    ````mdx
+    ```
+    console.log("Hello World!!");
+    ```
+    ````
+  </div>
+  <div>
+    ```
+    console.log('Hello World!!');
+    ```
+  </div>
+</TwoGridLayout>
+
+### タイトル
+
+{/* prettier-ignore */}
+<TwoGridLayout>
+  <div>
+    ````mdx
+    ```js title="sample.tsx"
+    console.log("Hello World!!");
+    ```
+    ````
+  </div>
+  <div>
+    ```js title="sample.tsx"
+    console.log('Hello World!!');
+    ```
+  </div>
+</TwoGridLayout>
+
+### 行番号
+
+{/* prettier-ignore */}
+<TwoGridLayout>
+  <div>
+    ````mdx
+    ```js showLineNumbers
+    console.log("Hello World!!");
+    ```
+    ````
+  </div>
+  <div>
+    ```js showLineNumbers
+    console.log('Hello World!!');
+    ```
+  </div>
+</TwoGridLayout>
+
+### 行ハイライト
+
+{/* prettier-ignore */}
+<TwoGridLayout>
+  <div>
+    ````mdx
+    ```js {1}
+    console.log("Hello World!!");
+    ```
+    ````
+  </div>
+  <div>
+    ```js {1}
+    console.log('Hello World!!');
+    ```
+  </div>
+</TwoGridLayout>
+
+### 単語のハイライト
+
+{/* prettier-ignore */}
+<TwoGridLayout>
+  <div>
+    ````mdx
+    ```js /Hello/ /Apple/ /World/3-3
+    console.log('Hello, World!!');
+    console.log('Hello, Apple!!');
+    console.log('GoodNight, World!!');
+    ```
+    ````
+  </div>
+  <div>
+    ```js /Hello/ /Apple/ /World/2-3
+    console.log('Hello, World!!');
+    console.log('Hello, Apple!!');
+    console.log('GoodNight, World!!');
+    ```
+  </div>
+</TwoGridLayout>
+
+### 差分表示
+
+{/* prettier-ignore */}
+<TwoGridLayout>
+  <div>
+    ````mdx
+    ```js
+    console.log('Hello'); // [!code --]
+    console.log('World!!'); // [!code ++]
+    console.log('Diff!!');
+    ```
+    ````
+  </div>
+  <div>
+    ```js
+    console.log('Hello'); // [!code --]
+    console.log('World!!'); // [!code ++]
+    console.log('Diff!!');
+    ```
+  </div>
+</TwoGridLayout>
+
+### 複数指定
+
+複数の属性を同時に指定できます
+
+{/* prettier-ignore */}
+<TwoGridLayout>
+  <div>
+    ````mdx
+    ```tsx title="hello.tsx" showLineNumbers {1-2}
+    export const Hello = ({ name }: { name: string }) => {
+      return <div>Hello, {name}!</div>;
+    };
+    ```
+    ````
+  </div>
+  <div>
+    ```tsx title="hello.tsx" showLineNumbers {1-2}
+    export const Hello = ({ name }: { name: string }) => {
+      return <div>Hello, {name}!</div>;
+    };
+    ```
+  </div>
+</TwoGridLayout>
+
+## 数式
+
+数式を記述することが出来ます。
+
+追加予定
+
+### インライン
+
+### 数式ブロック
+
+## 引用
+
+{/* prettier-ignore */}
+<TwoGridLayout>
+  <div>
+    ```mdx
+    > 引用文 1
+    ```
+
+  </div>
+  <div>
+    > 引用文 1
+  </div>
+</TwoGridLayout>
+
+## 脚注
+
+{/* prettier-ignore */}
+<TwoGridLayout>
+  <div>
+    ```mdx
+    脚注１[^1]
+    
+    [^1]: 脚注の文章
+    ```
+  </div>
+  <div>
+    脚注[^1]
+
+    [^1]: 脚注の文章
+
+  </div>
+</TwoGridLayout>
+
+## 区切り線
+
+{/* prettier-ignore */}
+<TwoGridLayout>
+  <div>
+    ```mdx
+    ---
+    ```
+  </div>
+  <div>
+    ---
+  </div>
+</TwoGridLayout>
+
+## コメントアウト
+
+{/* prettier-ignore */}
+<TwoGridLayout>
+  <div>
+    ```mdx
+    {/* コメントアウト */}
+    ```
+  </div>
+  <div>
+    {/* コメントアウト */}
+  </div>
+</TwoGridLayout>
+
+## フロントマターについて
+
+フロントマターとは、MDXファイルの先頭に記述されるYAML形式のメタデータです。
+
+記事のタイトルや投稿日時などの情報を指定します。
+
+### 例
+
+ファイル先頭部の `---` で囲まれた例のような形式で記述します。
+
+```yaml
+---
+published: true
+icon: '✍️'
+title: 'MDX サンプル'
+description: '本サイトで使用可能な MDX のサンプルです。'
+date: '2025-02-03T00:00:00+09:00'
+lastupdated: '2025-02-15T23:50:00+09:00'
+categories:
+  - 'news'
+tags:
+  - 'mdx'
+  - 'サンプル'
+---
+```
+
+### 利用可能なプロパティ
+
+以下がこのサイトで利用可能なプロパティです。
+
+| プロパティ    | 必須 | 値                                        | 説明                                                                |
+| ------------- | ---- | ----------------------------------------- | ------------------------------------------------------------------- |
+| `published`   | true | `true` or `false`                         | 記事を公開するかしないかを指定する。 公開しない場合は、_執筆モード_ |
+| `icon`        |      | Unicode Emoji <br /> 例: `&#x1F389` -> 🎉 | 記事のアイコンを指定                                                |
+| `title`       | true | `string`                                  | 記事のタイトル名を指定                                              |
+| `date`        | true | `YYYY-MM-DDTHH:mm:ss+09:00`               | 記事の公開日時を指定                                                |
+| `lastupdated` |      | `YYYY-MM-DDTHH:mm:ss+09:00`               | 記事の更新日時を指定                                                |
+| `categories`  | true | [カテゴリ](#カテゴリ)のリスト             | 記事のカテゴリを指定<br />使用可能なカテゴリを確認                  |
+| `tags`        | true | タグのリスト                              | 記事のタグを指定                                                    |
+
+### カテゴリ
+
+使用可能なカテゴリ
+
+- `news` : お知らせ
+- `events` : イベント
+- `activities` : 活動
+
+## コールアウト
+
+コールアウトは、特定の文章を目立たせるためのスタイルです。
+
+追加予定
+
+## 埋め込み
+
+埋め込みは、外部のコンテンツを記事内に表示するための機能です。
+
+追加予定
+
+https://www.youtube.com/watch?v=gSSsZReIFRk
+
+## MDX / JSX
+
+MDX とは、Markdown の中に React Component や JSX を埋め込むことが出来る記法です。
+
+本サイトでは、以下のようなカスタムコンポーネントを事前に提供しています。
+
+### タブレイアウト
+
+複数のコンテンツをタブ切り替えによって提供するコンポーネントです。
+
+※ UX を低下させる可能性があります。
+
+{/* prettier-ignore */}
+<TwoGridLayout>
+  <div>
+    ````mdx
+    {/* prettier-ignore */}
+    <TabLayout>
+      <div title="TSX">
+        ```tsx title="Counter.tsx" showLineNumbers
+        'use client';
+        // ...
+        ```
+      </div>
+      <div title="Result">
+      <Counter />
+      </div>
+      <div title="Image">
+      ![Sample Image](/dev-placeholder.png)
+      </div>
+    </TabLayout>
+    ````
+
+  </div>
+  <div>
+    {/* prettier-ignore */}
+    <TabLayout>
+      <div title="TSX">
+        ```tsx title="Counter.tsx" showLineNumbers
+        'use client';
+
+        import { useState } from 'react';
+
+        export const Counter = () => {
+          const [count, setCount] = useState(0);
+
+          return (
+            <div>
+              <p className="text-2xl font-bold">Counter</p>
+              <div className="flex items-center gap-4">
+                <button className="rounded-md bg-card p-2" onClick={() => setCount(count - 1)}>
+                  -
+                </button>
+                <span>{count}</span>
+                <button className="rounded-md bg-card p-2" onClick={() => setCount(count + 1)}>
+                  +
+                </button>
+              </div>
+            </div>
+          );
+        };
+        ```
+      </div>
+      <div title="Result">
+      <Counter />
+      </div>
+      <div title="Image">
+      ![Sample Image](/dev-placeholder.png)
+      </div>
+    </TabLayout>
+
+  </div>
+</TwoGridLayout>
+
+### 二段レイアウト
+
+二段構えのレイアウトを提供するコンポーネントです。
+
+{/* prettier-ignore */}
+<TwoGridLayout>
+  <div>
+    ````mdx
+    {/* prettier-ignore */}
+    <TwoGridLayout>
+      <div>
+        ```plaintext
+        左
+        ```
+      </div>
+      <div>
+        ```plaintext
+        右
+        ```
+      </div>
+    </TwoGridLayout>
+    ````
+  </div>
+  <div>
+    {/* prettier-ignore */}
+    <TwoGridLayout>
+      <div>
+        ```plaintext
+        左
+        ```
+      </div>
+      <div>
+        ```plaintext
+        右
+        ```
+      </div>
+    </TwoGridLayout>
+  </div>
+</TwoGridLayout>
+
+### カスタムコンポーネントの追加
+
+独自のコンポーネントを追加することが出来ます。
+
+現状、事前に動的に記事を JSON に変換する都合上、 MDX ファイル内での `import` でコンポーネントを読み込むことができません。
+
+**実装手順**
+
+1. `contents/components` 内にコンポーネントファイルを作成
+2. `contents/components/index.tsx` に コンポーネントを追加
+
+   ```tsx
+   import { Counter } from './Counter';
+
+   /**
+    * Content components
+    * An object that aggregates components used in Posts and Pages.
+    */
+   export const ContentComponents = {
+     // Below add your components
+     Counter,
+   };
+   ```
+
+3. `posts`・`pages` 全域で使用可能になります。

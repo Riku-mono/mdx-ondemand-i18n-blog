@@ -4,6 +4,7 @@ icon: '✍️'
 title: 'MDX Sample'
 description: 'This is a sample of MDX that can be used on this site.'
 date: '2025-02-03T00:00:00+09:00'
+lastupdated: '2025-02-15T23:50:00+09:00'
 categories:
   - 'news'
 tags:
@@ -13,5 +14,588 @@ tags:
 
 ## Overview
 
-This is a sample of MDX that can be used on this site.
-More will be added in the future.
+This site provides sample MDX usage. More samples will be added sequentially.
+
+Below, MDX syntax examples are presented.
+
+## Headings
+
+{/* prettier-ignore */}
+<TwoGridLayout>
+  <div>
+    ```mdx
+    ## Heading 2
+
+    ### Heading 3
+
+    #### Heading 4
+
+    ##### Heading 5
+
+    ###### Heading 6
+    ```
+
+  </div>
+  <div>
+    ## Heading 2
+
+    ### Heading 3
+
+    #### Heading 4
+
+    ##### Heading 5
+
+    ###### Heading 6
+
+  </div>
+</TwoGridLayout>
+
+Heading 1 is not used.
+
+For SEO and usability reasons, start with h2 for headings.
+Also, avoid using headings beyond h5 as much as possible.
+
+## Styling
+
+{/* prettier-ignore */}
+<TwoGridLayout>
+  <div>
+    ```mdx
+    **Bold**
+    
+    _Italic_
+
+    **_Bold Italic_**
+
+    ~~Strikethrough~~
+
+    `inline code`
+    ```
+
+  </div>
+  <div>
+    **Bold**
+    
+    _Italic_
+
+    **_Bold Italic_**
+
+    ~~Strikethrough~~
+
+    `inline code`
+
+  </div>
+</TwoGridLayout>
+
+## Lists
+
+### Unordered List
+
+{/* prettier-ignore */}
+<TwoGridLayout>
+  <div>
+    ```mdx
+    - item 1
+      - item 1-1
+      - item 1-2
+    - item 2
+        
+        Text inside the item
+    ```
+
+  </div>
+  <div>
+    - item 1
+      - item 1-1
+      - item 1-2
+    - item 2
+          
+        Text inside the item
+  </div>
+</TwoGridLayout>
+
+## Links
+
+### Internal Link
+
+{/* prettier-ignore */}
+<TwoGridLayout>
+  <div>
+    ```mdx
+    [Home](/)
+    ```
+  </div>
+  <div>
+    [Home](/)
+  </div>
+</TwoGridLayout>
+
+### External Link
+
+{/* prettier-ignore */}
+<TwoGridLayout>
+  <div>
+    ```mdx
+    [Google](https://google.com)
+    ```
+  </div>
+  <div>
+    [Google](https://google.com)
+  </div>
+</TwoGridLayout>
+
+## Images
+
+{/* prettier-ignore */}
+<TwoGridLayout>
+  <div>
+    ```mdx
+    ![Dev placeholder Image](/dev-placeholder.png)
+    ```
+  </div>
+  <div>
+    ![Dev placeholder Image](/dev-placeholder.png)
+  </div>
+</TwoGridLayout>
+
+## Tables
+
+{/* prettier-ignore */}
+<TwoGridLayout>
+  <div>
+    ```mdx
+    | Header 1 | Header 2 | Header 3 |
+    | :------- | :------: | -------: |
+    | 1-1      |   1-2    |      1-3 |
+    | 2-1      |   2-2    |      2-3 |
+    ```
+  </div>
+  <div>
+    | Header 1 | Header 2 | Header 3 |
+    | :------- | :------: | -------: |
+    | 1-1      |   1-2    |      1-3 |
+    | 2-1      |   2-2    |      2-3 |
+  </div>
+</TwoGridLayout>
+
+## Code Blocks
+
+### Basic
+
+You can write a code block by enclosing it with three backticks.
+
+By specifying the language, syntax highlighting by [Shiki](https://shiki.matsu.io/) will be applied.
+
+If no language is specified, it will be displayed as plain text.
+
+{/* prettier-ignore */}
+<TwoGridLayout>
+  <div>
+    ````mdx
+    ```
+    console.log("Hello World!!");
+    ```
+    ````
+  </div>
+  <div>
+    ```
+    console.log('Hello World!!');
+    ```
+  </div>
+</TwoGridLayout>
+
+### Title
+
+{/* prettier-ignore */}
+<TwoGridLayout>
+  <div>
+    ````mdx
+    ```js title="sample.tsx"
+    console.log("Hello World!!");
+    ```
+    ````
+  </div>
+  <div>
+    ```js title="sample.tsx"
+    console.log('Hello World!!');
+    ```
+  </div>
+</TwoGridLayout>
+
+### Line Numbers
+
+{/* prettier-ignore */}
+<TwoGridLayout>
+  <div>
+    ````mdx
+    ```js showLineNumbers
+    console.log("Hello World!!");
+    ```
+    ````
+  </div>
+  <div>
+    ```js showLineNumbers
+    console.log('Hello World!!');
+    ```
+  </div>
+</TwoGridLayout>
+
+### Highlight Lines
+
+{/* prettier-ignore */}
+<TwoGridLayout>
+  <div>
+    ````mdx
+    ```js {1}
+    console.log("Hello World!!");
+    ```
+    ````
+  </div>
+  <div>
+    ```js {1}
+    console.log('Hello World!!');
+    ```
+  </div>
+</TwoGridLayout>
+
+### Highlight Words
+
+{/* prettier-ignore */}
+<TwoGridLayout>
+  <div>
+    ````mdx
+    ```js /Hello/ /Apple/ /World/3-3
+    console.log('Hello, World!!');
+    console.log('Hello, Apple!!');
+    console.log('GoodNight, World!!');
+    ```
+    ````
+  </div>
+  <div>
+    ```js /Hello/ /Apple/ /World/2-3
+    console.log('Hello, World!!');
+    console.log('Hello, Apple!!');
+    console.log('GoodNight, World!!');
+    ```
+  </div>
+</TwoGridLayout>
+
+### Diff
+
+{/* prettier-ignore */}
+<TwoGridLayout>
+  <div>
+    ````mdx
+    ```js
+    console.log('Hello'); // [!code --]
+    console.log('World!!'); // [!code ++]
+    console.log('Diff!!');
+    ```
+    ````
+  </div>
+  <div>
+    ```js
+    console.log('Hello'); // [!code --]
+    console.log('World!!'); // [!code ++]
+    console.log('Diff!!');
+    ```
+  </div>
+</TwoGridLayout>
+
+### Multiple Attributes
+
+Multiple attributes can be specified simultaneously.
+
+{/* prettier-ignore */}
+<TwoGridLayout>
+  <div>
+    ````mdx
+    ```tsx title="hello.tsx" showLineNumbers {1-2}
+    export const Hello = ({ name }: { name: string }) => {
+      return <div>Hello, {name}!</div>;
+    };
+    ```
+    ````
+  </div>
+  <div>
+    ```tsx title="hello.tsx" showLineNumbers {1-2}
+    export const Hello = ({ name }: { name: string }) => {
+      return <div>Hello, {name}!</div>;
+    };
+    ```
+  </div>
+</TwoGridLayout>
+
+## Math
+
+Can be written mathematic formulas.
+
+To be added.
+
+### Inline Math
+
+### Block Math
+
+## Blockquotes
+
+{/* prettier-ignore */}
+<TwoGridLayout>
+  <div>
+    ```mdx
+    > Blockquote 1
+    ```
+
+  </div>
+  <div>
+    > Blockquote 1
+  </div>
+</TwoGridLayout>
+
+## Footnotes
+
+{/* prettier-ignore */}
+<TwoGridLayout>
+  <div>
+    ```mdx
+    Footnotes 1[^1]
+    
+    [^1]: Footnotes text
+    ```
+  </div>
+  <div>
+    Footnotes 1[^1]
+
+    [^1]: Footnotes text
+
+  </div>
+</TwoGridLayout>
+
+## Horizontal Line
+
+{/* prettier-ignore */}
+<TwoGridLayout>
+  <div>
+    ```mdx
+    ---
+    ```
+  </div>
+  <div>
+    ---
+  </div>
+</TwoGridLayout>
+
+## Comment Out
+
+{/* prettier-ignore */}
+<TwoGridLayout>
+  <div>
+    ```mdx
+    {/* Comment Out */}
+    ```
+  </div>
+  <div>
+    {/* Comment Out */}
+  </div>
+</TwoGridLayout>
+
+## About Front Matter
+
+Front matter is YAML-formatted metadata written at the beginning of an MDX file.
+
+Specify information such as the title of the article and the date and time of posting.
+
+### Example
+
+Describe the content in the following format, similar to the example enclosed by `---` at the beginning of the file.
+
+```yaml
+---
+published: true
+icon: '✍️'
+title: 'MDX Sample'
+description: 'This is a sample of MDX that can be used on this site.'
+date: '2025-02-03T00:00:00+09:00'
+lastupdated: '2025-02-15T23:50:00+09:00'
+categories:
+  - 'news'
+tags:
+  - 'mdx'
+  - 'sample'
+---
+```
+
+### Available Properties
+
+The following properties are available on this site.
+
+| Property      | Required | Value                                          | Description                                                                 |
+| ------------- | -------- | ---------------------------------------------- | --------------------------------------------------------------------------- |
+| `published`   | true     | `true` or `false`                              | Specifies whether the article is published. If not, it's in _draft mode_    |
+| `icon`        |          | Unicode Emoji <br /> Example: `&#x1F389` -> 🎉 | Specifies the article's icon.                                               |
+| `title`       | true     | `string`                                       | Specifies the article title.                                                |
+| `date`        | true     | `YYYY-MM-DDTHH:mm:ss+09:00`                    | Specifies the article's publication date.                                   |
+| `lastupdated` |          | `YYYY-MM-DDTHH:mm:ss+09:00`                    | Specifies the article's last update date.                                   |
+| `categories`  | true     | List of [Categories](#Categories)              | Specifies the article's categories.<br />Please check available categories. |
+| `tags`        | true     | List of Tags                                   | Specifies the article's tags.                                               |
+
+### Categories
+
+The following categories are available.
+
+- `news` : News
+- `events` : Events
+- `activities` : Activities
+
+## Callouts
+
+Callouts are styles used to highlight specific text.
+
+To be added.
+
+## Embeds
+
+Embeds allow external content to be displayed within articles.
+
+To be added.
+
+https://www.youtube.com/watch?v=gSSsZReIFRk
+
+## MDX / JSX
+
+MDX is a format that allows embedding React Components and JSX inside Markdown.
+
+This site provides the following custom components by default.
+
+### Tab Layout
+
+A component that allows switching between multiple contents using tabs.
+
+※ This may negatively impact UX.
+
+{/* prettier-ignore */}
+<TwoGridLayout>
+  <div>
+    ````mdx
+    {/* prettier-ignore */}
+    <TabLayout>
+      <div title="TSX">
+        ```tsx title="Counter.tsx" showLineNumbers
+        'use client';
+        // ...
+        ```
+      </div>
+      <div title="Result">
+      <Counter />
+      </div>
+      <div title="Image">
+      ![Sample Image](/dev-placeholder.png)
+      </div>
+    </TabLayout>
+    ````
+
+  </div>
+  <div>
+    {/* prettier-ignore */}
+    <TabLayout>
+      <div title="TSX">
+        ```tsx title="Counter.tsx" showLineNumbers
+        'use client';
+
+        import { useState } from 'react';
+
+        export const Counter = () => {
+          const [count, setCount] = useState(0);
+
+          return (
+            <div>
+              <p className="text-2xl font-bold">Counter</p>
+              <div className="flex items-center gap-4">
+                <button className="rounded-md bg-card p-2" onClick={() => setCount(count - 1)}>
+                  -
+                </button>
+                <span>{count}</span>
+                <button className="rounded-md bg-card p-2" onClick={() => setCount(count + 1)}>
+                  +
+                </button>
+              </div>
+            </div>
+          );
+        };
+        ```
+      </div>
+      <div title="Result">
+      <Counter />
+      </div>
+      <div title="Image">
+      ![Sample Image](/dev-placeholder.png)
+      </div>
+    </TabLayout>
+
+  </div>
+</TwoGridLayout>
+
+### Two-Column Layout
+
+A component that provides a two-column layout.
+
+{/* prettier-ignore */}
+<TwoGridLayout>
+  <div>
+    ````mdx
+    {/* prettier-ignore */}
+    <TwoGridLayout>
+      <div>
+        ```plaintext
+        Left
+        ```
+      </div>
+      <div>
+        ```plaintext
+        Right
+        ```
+      </div>
+    </TwoGridLayout>
+    ````
+  </div>
+  <div>
+    {/* prettier-ignore */}
+    <TwoGridLayout>
+      <div>
+        ```plaintext
+        Left
+        ```
+      </div>
+      <div>
+        ```plaintext
+        Right
+        ```
+      </div>
+    </TwoGridLayout>
+  </div>
+</TwoGridLayout>
+
+### Adding Custom Components
+
+You can add your own custom components.
+
+Currently, due to the pre-processing of articles into JSON dynamically, components cannot be imported within MDX files using `import`.
+
+**Implementation Steps**
+
+1. Create a component file inside `contents/components`
+2. Add the component to `contents/components/index.tsx`
+
+   ```tsx
+   import { Counter } from './Counter';
+
+   /**
+    * Content components
+    * An object that aggregates components used in Posts and Pages.
+    */
+   export const ContentComponents = {
+     // Below add your components
+     Counter,
+   };
+   ```
+
+3. The component will now be available across `posts` and `pages`.

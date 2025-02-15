@@ -1,4 +1,5 @@
 import type { MDXComponents } from 'mdx/types';
+import { ContentComponents } from '@/contents/components/index';
 
 import TwoGridLayout from './elm/CustomTwoGridLayout';
 import Pre from './elm/CustomPre';
@@ -14,4 +15,5 @@ export const components: MDXComponents = {
   code: (props) => <code {...props} />,
   pre: (props) => <Pre {...props} />,
   ...defaultComponents,
+  ...ContentComponents,
 };

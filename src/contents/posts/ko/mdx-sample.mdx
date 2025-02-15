@@ -4,14 +4,598 @@ icon: '✍️'
 title: 'MDX 샘플'
 description: '본 사이트에서 사용 가능한 MDX 샘플입니다.'
 date: '2025-02-03T00:00:00+09:00'
+lastupdated: '2025-02-15T23:50:00+09:00'
 categories:
   - 'news'
 tags:
   - 'mdx'
-  - 'sample'
+  - '샘플'
 ---
 
 ## 개요
 
-본 사이트에서 사용 가능한 MDX 샘플입니다.
-추가될 예정입니다.
+본 사이트에서 사용 가능한 MDX 샘플입니다. 순차적으로 추가해 나갈 예정입니다.
+
+다음은 MDX 표기법입니다.
+
+## 제목
+
+{/* prettier-ignore */}
+<TwoGridLayout>
+  <div>
+    ```mdx
+    ## 제목 2
+
+    ### 제목 3
+
+    #### 제목 4
+
+    ##### 제목 5
+
+    ###### 제목 6
+    ```
+
+  </div>
+  <div>
+    ## 제목 2
+
+    ### 제목 3
+
+    #### 제목 4
+
+    ##### 제목 5
+
+    ###### 제목 6
+
+  </div>
+</TwoGridLayout>
+
+제목1은 사용하지 않습니다.
+
+SEO 및 사용성 측면에서 제목은 h2부터 시작해야 합니다.
+또한, 제목 5 이상은 가급적 사용하지 않는 것이 좋습니다.
+
+## 스타일링
+
+{/* prettier-ignore */}
+<TwoGridLayout>
+  <div>
+    ```mdx
+    **굵게**
+    
+    _이탤릭체_
+    
+    **_굵게 이탤릭체_**
+    
+    ~~취소선~~
+    
+    `인라인 코드`
+    ```
+
+  </div>
+  <div>
+    **굵게**
+
+    _이탤릭체_
+
+    **_굵게 이탤릭체_**
+
+    ~~취소선~~
+
+    `인라인 코드`
+
+  </div>
+</TwoGridLayout>
+
+## 목록
+
+### 순서 없는 목록
+
+{/* prettier-ignore */}
+<TwoGridLayout>
+  <div>
+    ```mdx
+    - 항목 1
+      - 항목 1-1
+      - 항목 1-2
+    - 항목 2
+        
+        항목 내의 텍스트
+    ```
+
+  </div>
+  <div>
+    - 항목 1
+      - 항목 1-1
+      - 항목 1-2
+    - 항목 2
+          
+        항목 내의 텍스트
+  </div>
+</TwoGridLayout>
+
+## 링크
+
+### 내부 링크
+
+{/* prettier-ignore */}
+<TwoGridLayout>
+  <div>
+    ```mdx
+    [홈](/)
+    ```
+  </div>
+  <div>
+    [홈](/)
+  </div>
+</TwoGridLayout>
+
+### 외부 링크
+
+{/* prettier-ignore */}
+<TwoGridLayout>
+  <div>
+    ```mdx
+    [Google](https://google.com)
+    ```
+  </div>
+  <div>
+    [Google](https://google.com)
+  </div>
+</TwoGridLayout>
+
+## 이미지
+
+{/* prettier-ignore */}
+<TwoGridLayout>
+  <div>
+    ```mdx
+    ![Dev placeholder Image](/dev-placeholder.png)
+    ```
+  </div>
+  <div>
+    ![Dev placeholder Image](/dev-placeholder.png)
+  </div>
+</TwoGridLayout>
+
+## 표
+
+{/* prettier-ignore */}
+<TwoGridLayout>
+  <div>
+    ```mdx
+    | Header 1 | Header 2 | Header 3 |
+    | :------- | :------: | -------: |
+    | 1-1      |   1-2    |      1-3 |
+    | 2-1      |   2-2    |      2-3 |
+    ```
+  </div>
+  <div>
+    | Header 1 | Header 2 | Header 3 |
+    | :------- | :------: | -------: |
+    | 1-1      |   1-2    |      1-3 |
+    | 2-1      |   2-2    |      2-3 |
+  </div>
+</TwoGridLayout>
+
+## 코드 블록
+
+### 기본
+
+백쿼트 3개로 묶어 코드 블록을 작성할 수 있습니다.
+
+지원 언어를 지정하면 [Shiki](https://shiki.matsu.io/)에 의한 구문 강조가 적용된다.
+
+언어를 지정하지 않으면 일반 텍스트로 표시됩니다.
+
+{/* prettier-ignore */}
+<TwoGridLayout>
+  <div>
+    ````mdx
+    ```
+    console.log("Hello World!!");
+    ```
+    ````
+  </div>
+  <div>
+    ```
+    console.log('Hello World!!');
+    ```
+  </div>
+</TwoGridLayout>
+
+### 제목
+
+{/* prettier-ignore */}
+<TwoGridLayout>
+  <div>
+    ````mdx
+    ```js title="sample.tsx"
+    console.log("Hello World!!");
+    ```
+    ````
+  </div>
+  <div>
+    ```js title="sample.tsx"
+    console.log('Hello World!!');
+    ```
+  </div>
+</TwoGridLayout>
+
+### 줄 번호
+
+{/* prettier-ignore */}
+<TwoGridLayout>
+  <div>
+    ````mdx
+    ```js showLineNumbers
+    console.log("Hello World!!");
+    ```
+    ````
+  </div>
+  <div>
+    ```js showLineNumbers
+    console.log('Hello World!!');
+    ```
+  </div>
+</TwoGridLayout>
+
+### 줄 강조
+
+{/* prettier-ignore */}
+<TwoGridLayout>
+  <div>
+    ````mdx
+    ```js {1}
+    console.log("Hello World!!");
+    ```
+    ````
+  </div>
+  <div>
+    ```js {1}
+    console.log('Hello World!!');
+    ```
+  </div>
+</TwoGridLayout>
+
+### 단어 강조
+
+{/* prettier-ignore */}
+<TwoGridLayout>
+  <div>
+    ````mdx
+    ```js /Hello/ /Apple/ /World/3-3
+    console.log('Hello, World!!');
+    console.log('Hello, Apple!!');
+    console.log('GoodNight, World!!');
+    ```
+    ````
+  </div>
+  <div>
+    ```js /Hello/ /Apple/ /World/2-3
+    console.log('Hello, World!!');
+    console.log('Hello, Apple!!');
+    console.log('GoodNight, World!!');
+    ```
+  </div>
+</TwoGridLayout>
+
+### 차이점 표시
+
+{/* prettier-ignore */}
+<TwoGridLayout>
+  <div>
+    ````mdx
+    ```js
+    console.log('Hello'); // [!code --]
+    console.log('World!!'); // [!code ++]
+    console.log('Diff!!');
+    ```
+    ````
+  </div>
+  <div>
+    ```js
+    console.log('Hello'); // [!code --]
+    console.log('World!!'); // [!code ++]
+    console.log('Diff!!');
+    ```
+  </div>
+</TwoGridLayout>
+
+### 여러 언어 지정
+
+여러 속성을 동시에 지정할 수 있습니다.
+
+{/* prettier-ignore */}
+<TwoGridLayout>
+  <div>
+    ````mdx
+    ```tsx title="hello.tsx" showLineNumbers {1-2}
+    export const Hello = ({ name }: { name: string }) => {
+      return <div>Hello, {name}!</div>;
+    };
+    ```
+    ````
+  </div>
+  <div>
+    ```tsx title="hello.tsx" showLineNumbers {1-2}
+    export const Hello = ({ name }: { name: string }) => {
+      return <div>Hello, {name}!</div>;
+    };
+    ```
+  </div>
+</TwoGridLayout>
+
+## 수식
+
+수식을 작성할 수 있습니다.
+
+추가 예정
+
+### 인라인
+
+### 수식 블록
+
+## 인용
+
+{/* prettier-ignore */}
+<TwoGridLayout>
+  <div>
+    ```mdx
+    > 인용문 1
+    ```
+
+  </div>
+  <div>
+    > 인용문 1
+  </div>
+</TwoGridLayout>
+
+## 각주
+
+{/* prettier-ignore */}
+<TwoGridLayout>
+  <div>
+    ```mdx
+    각주[^1]
+    
+    [^1]: 각주의 내용
+    ```
+  </div>
+  <div>
+    각주[^1]
+    
+    [^1]: 각주의 내용
+
+  </div>
+</TwoGridLayout>
+
+## 수평선
+
+{/* prettier-ignore */}
+<TwoGridLayout>
+  <div>
+    ```mdx
+    ---
+    ```
+  </div>
+  <div>
+    ---
+  </div>
+</TwoGridLayout>
+
+## 코멘트아웃
+
+{/* prettier-ignore */}
+<TwoGridLayout>
+  <div>
+    ```mdx
+    {/* 코멘트아웃 */}
+    ```
+  </div>
+  <div>
+    {/* 코멘트아웃 */}
+  </div>
+</TwoGridLayout>
+
+## 프론트 매터에 대하여
+
+Front Matter는 MDX 파일의 맨 앞에 작성되는 YAML 형식의 메타데이터입니다.
+
+글의 제목, 게시 날짜 등의 정보를 지정합니다.
+
+### 예시
+
+파일 앞머리에 `---`로 둘러싸인 예시와 같은 형식으로 작성합니다.
+
+```yaml
+---
+published: true
+icon: '✍️'
+title: 'MDX 샘플'
+description: '본 사이트에서 사용 가능한 MDX 샘플입니다.'
+date: '2025-02-03T00:00:00+09:00'
+lastupdated: '2025-02-15T23:50:00+09:00'
+categories:
+  - 'news'
+tags:
+  - 'mdx'
+  - '샘플'
+---
+```
+
+### 사용 가능한 프로퍼티
+
+아래는 이 사이트에서 이용할 수 있는 속성입니다.
+
+| 속성입        | 필수 | 값                                          | 설명                                                        |
+| ------------- | ---- | ------------------------------------------- | ----------------------------------------------------------- |
+| `published`   | true | `true` or `false`                           | 글 공개 여부를 지정합니다. 공개하지 않을 경우 _글쓰기 모드_ |
+| `icon`        |      | Unicode Emoji <br /> 예시: `&#x1F389` -> 🎉 | 기사 아이콘 지정                                            |
+| `title`       | true | `string`                                    | 기사 제목명 지정                                            |
+| `date`        | true | `YYYY-MM-DDTHH:mm:ss+09:00`                 | 기사 공개 날짜 및 시간 지정                                 |
+| `lastupdated` |      | `YYYY-MM-DDTHH:mm:ss+09:00`                 | 기사 업데이트 날짜 지정                                     |
+| `categories`  | true | [카테고리](#카테고리) 리스트                | 글의 카테고리 지정<br /> 사용 가능한 카테고리 확인          |
+| `tags`        | true | 태그 목록                                   | 기사 태그 지정                                              |
+
+### 카테고리
+
+사용 가능한 카테고리
+
+- `news` : 뉴스
+- `events` : 이벤트
+- `activities` : 활동
+
+## 콜아웃
+
+콜아웃은 특정 문장을 돋보이게 하기 위한 스타일입니다.
+
+추가 예정
+
+## 임베딩
+
+임베딩은 외부 콘텐츠를 기사 내에 표시하기 위한 기능입니다.
+
+추가 예정
+
+https://www.youtube.com/watch?v=gSSsZReIFRk
+
+## MDX / JSX
+
+MDX는 Markdown 안에 React Component나 JSX를 삽입할 수 있는 표기법입니다.
+
+본 사이트에서는 아래와 같은 커스텀 컴포넌트를 미리 제공하고 있다.
+
+### 탭 레이아웃
+
+여러 콘텐츠를 탭 전환을 통해 제공하는 컴포넌트입니다.
+
+※ UX를 저하시킬 수 있습니다.
+
+{/* prettier-ignore */}
+<TwoGridLayout>
+  <div>
+    ````mdx
+    {/* prettier-ignore */}
+    <TabLayout>
+      <div title="TSX">
+        ```tsx title="Counter.tsx" showLineNumbers
+        'use client';
+        // ...
+        ```
+      </div>
+      <div title="Result">
+      <Counter />
+      </div>
+      <div title="Image">
+      ![Sample Image](/dev-placeholder.png)
+      </div>
+    </TabLayout>
+    ````
+
+  </div>
+  <div>
+    {/* prettier-ignore */}
+    <TabLayout>
+      <div title="TSX">
+        ```tsx title="Counter.tsx" showLineNumbers
+        'use client';
+
+        import { useState } from 'react';
+
+        export const Counter = () => {
+          const [count, setCount] = useState(0);
+
+          return (
+            <div>
+              <p className="text-2xl font-bold">Counter</p>
+              <div className="flex items-center gap-4">
+                <button className="rounded-md bg-card p-2" onClick={() => setCount(count - 1)}>
+                  -
+                </button>
+                <span>{count}</span>
+                <button className="rounded-md bg-card p-2" onClick={() => setCount(count + 1)}>
+                  +
+                </button>
+              </div>
+            </div>
+          );
+        };
+        ```
+      </div>
+      <div title="Result">
+      <Counter />
+      </div>
+      <div title="Image">
+      ![Sample Image](/dev-placeholder.png)
+      </div>
+    </TabLayout>
+
+  </div>
+</TwoGridLayout>
+
+### 두 개의 열 레이아웃
+
+두 개의 열 레이아웃을 제공하는 컴포넌트입니다.
+
+{/* prettier-ignore */}
+<TwoGridLayout>
+  <div>
+    ````mdx
+    {/* prettier-ignore */}
+    <TwoGridLayout>
+      <div>
+        ```plaintext
+        왼쪽
+        ```
+      </div>
+      <div>
+        ```plaintext
+        오른쪽
+        ```
+      </div>
+    </TwoGridLayout>
+    ````
+  </div>
+  <div>
+    {/* prettier-ignore */}
+    <TwoGridLayout>
+      <div>
+        ```plaintext
+        왼쪽
+        ```
+      </div>
+      <div>
+        ```plaintext
+        오른쪽
+        ```
+      </div>
+    </TwoGridLayout>
+  </div>
+</TwoGridLayout>
+
+### 커스텀 컴포넌트 추가
+
+자신만의 컴포넌트를 추가할 수 있습니다.
+
+현재, 사전에 동적으로 기사를 JSON 으로 변환하는 관계로 MDX 파일 내에서 `import` 로 컴포넌트를 불러올 수 없습니다.
+
+**구현 절차**
+
+1. `contents/components` 내에 컴포넌트 파일 만들기
+2. `contents/components/index.tsx`에 컴포넌트를 추가한다.
+
+   ```tsx
+   import { Counter } from './Counter';
+
+   /**
+    * Content components
+    * An object that aggregates components used in Posts and Pages.
+    */
+   export const ContentComponents = {
+     // Below add your components
+     Counter,
+   };
+   ```
+
+3. `posts`, `pages` 전체에서 사용할 수 있게 됩니다.
