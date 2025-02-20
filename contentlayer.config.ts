@@ -81,8 +81,27 @@ export const Category = defineDocumentType(() => ({
   computedFields,
 }));
 
+export const Page = defineDocumentType(() => ({
+  name: 'Page',
+  filePathPattern: 'pages/**/*.mdx',
+  contentType: 'mdx',
+  fields: {
+    published: { type: 'boolean', required: true },
+    title: { type: 'string', required: true },
+    date: { type: 'string', required: true },
+    lastupdated: { type: 'string' },
+    layout: {
+      type: 'enum',
+      options: ['default', 'full-width'],
+      required: true,
+    },
+  },
+  computedFields,
+}));
+
 export default makeSource({
   contentDirPath: 'src/contents/',
+  documentTypes: [Post, Category, Page],
   contentDirExclude: ['siteMetadata.ts', 'siteLocaleMetadata.ts', 'components/**/*'],
   mdx: {
     cwd: root,
