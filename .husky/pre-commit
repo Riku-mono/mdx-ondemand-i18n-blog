@@ -1,2 +1,3 @@
 npx lint-staged
 npx tsx scripts/validatePost.ts
+npx tsx scripts/validatePage.ts
