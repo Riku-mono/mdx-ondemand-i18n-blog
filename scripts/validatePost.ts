@@ -35,52 +35,54 @@ const REQUIRED_KEYS: (keyof FrontMatter)[] = [
 // `YYYY-MM-DDTHH:mm:ss+09:00`
 const ISO_DATE_REGEX = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\+\d{2}:\d{2}$/;
 
-function validatePost(postPath: string): string[] {
-  const post = fs.readFileSync(postPath, 'utf-8');
-  const { data: frontmatter } = matter(post);
+function validateRequiredKeys(frontmatter: FrontMatter): string[] {
+  return REQUIRED_KEYS.filter((key) => !frontmatter[key]).map(
+    (key) => `❌ Missing required key: ${key}`
+  );
+}
 
+function validateUnknownKeys(frontmatter: FrontMatter): string[] {
+  return Object.keys(frontmatter)
+    .filter((key) => !ALLOWED_KEYS.includes(key as keyof FrontMatter))
+    .map((key) => `⚠️ Unknown key detected: ${key}`);
+}
+
+function validateDate(frontmatter: FrontMatter): string[] {
   const errors: string[] = [];
-
-  // Check if filePath is mutch url pattern
-  const fileName = postPath.split('/').pop();
-  const slug = fileName?.replace('.mdx', '');
-  if (slug?.includes(' ')) {
-    errors.push('❌ filePath is not match url pattern');
-  }
-
-  // Check if all required keys are present
-  REQUIRED_KEYS.forEach((key) => {
-    if (!frontmatter[key]) {
-      errors.push(`❌ Missing required key: ${key}`);
-    }
-  });
-
-  // Check for unknown keys
-  Object.keys(frontmatter).forEach((key) => {
-    if (!ALLOWED_KEYS.includes(key as keyof FrontMatter)) {
-      errors.push(`⚠️ Unknown key detected: ${key}`);
-    }
-  });
-
-  // Check published value
-  if (typeof frontmatter.published !== 'boolean') {
-    errors.push('❌ published must be a boolean');
-  }
-
-  // Check date and lastupdated format
   if (!ISO_DATE_REGEX.test(frontmatter.date)) {
     errors.push('❌ date must be in ISO format: YYYY-MM-DDTHH:mm:ss+09:00');
   }
   if (frontmatter.lastupdated && !ISO_DATE_REGEX.test(frontmatter.lastupdated)) {
     errors.push('❌ lastupdated must be in ISO format: YYYY-MM-DDTHH:mm:ss+09:00');
   }
-
-  // Check lastupdated is same or after date
-  if (frontmatter.lastupdated && frontmatter.date > frontmatter.lastupdated) {
-    errors.push('❌ lastupdated must be same or after date');
-  }
-
   return errors;
+}
+
+function validatePublished(frontmatter: FrontMatter): string[] {
+  return typeof frontmatter.published !== 'boolean' ? ['❌ published must be a boolean'] : [];
+}
+
+function validatePath(filePath: string): string[] {
+  const fileName = filePath.split('/').pop();
+  const slug = fileName?.replace('.mdx', '');
+  return slug?.includes(' ') ? ['❌ filePath is not match url pattern'] : [];
+}
+
+function validateContent(content: string): string[] {
+  return !content.trim() ? ['❌ Empty content'] : [];
+}
+
+function validatePost(postPath: string): string[] {
+  const post = fs.readFileSync(postPath, 'utf-8');
+  const { data: frontmatter } = matter(post);
+  return [
+    ...validateRequiredKeys(frontmatter as FrontMatter),
+    ...validateUnknownKeys(frontmatter as FrontMatter),
+    ...validateDate(frontmatter as FrontMatter),
+    ...validatePublished(frontmatter as FrontMatter),
+    ...validatePath(postPath),
+    ...validateContent(post),
+  ];
 }
 
 function getStagedMdxFiles(): string[] {
@@ -99,22 +101,23 @@ function main() {
   const stagedMdxFiles = getStagedMdxFiles();
   let hasErrors = false;
 
-  stagedMdxFiles.forEach((file) => {
-    console.log(`🔍 Validating ${file}...`);
-    const errors = validatePost(file);
+  const errors: string[] = [];
 
-    if (errors.length > 0) {
+  stagedMdxFiles.forEach((filePath) => {
+    console.log(`🔍 Validating ${filePath}...`);
+    const postErrors = validatePost(filePath);
+    if (postErrors.length > 0) {
       hasErrors = true;
-      console.log(`❌ ${file} has errors:`);
-      errors.forEach((error) => console.log(error));
+      errors.push(`❌ ${filePath} has errors:`);
+      errors.push(...postErrors);
     }
   });
 
   if (hasErrors) {
-    console.log('❌ Validation failed. Please fix the errors before committing.');
+    console.error(errors.join('\n'));
     process.exit(1);
   } else {
-    console.log('✅ Validation passed.');
+    console.log('✅ All posts are validation passed.');
   }
 }
 

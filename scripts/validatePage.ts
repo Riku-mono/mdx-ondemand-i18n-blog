@@ -93,6 +93,7 @@ function main() {
   const errors: string[] = [];
 
   stagedMdxFiles.forEach((filePath) => {
+    console.log(`🔍 Validating ${filePath}...`);
     const pageErrors = validatePage(filePath);
     if (pageErrors.length > 0) {
       hasErrors = true;
