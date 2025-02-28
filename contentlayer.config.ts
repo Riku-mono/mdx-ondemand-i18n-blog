@@ -1,6 +1,7 @@
 import { ComputedFields, defineDocumentType, makeSource } from 'contentlayer2/source-files';
 import siteMetadata from './src/contents/siteMetadata';
 import remarkGfm from 'remark-gfm';
+import { remarkLinkCard } from '@/lib/plugins/remarkLinkCard';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypePrettyCode from 'rehype-pretty-code';
@@ -105,7 +106,7 @@ export default makeSource({
   contentDirExclude: ['siteMetadata.ts', 'siteLocaleMetadata.ts', 'components/**/*'],
   mdx: {
     cwd: root,
-    remarkPlugins: [remarkGfm],
+    remarkPlugins: [remarkGfm, remarkLinkCard],
     rehypePlugins: [
       rehypeSlug,
       [

@@ -3,6 +3,7 @@ import { ContentComponents } from '@/contents/components/index';
 
 import Pre from './elm/CustomPre';
 import CustomLink from './elm/CustomLink';
+import { CustomLinkCard } from './elm/CustomLinkCard';
 import TwoGridLayout from './elm/CustomTwoGridLayout';
 import TabLayout from './elm/CustomTabLayout';
 
@@ -13,6 +14,7 @@ const defaultComponents = {
 };
 
 export const components: MDXComponents = {
+  'link-card': CustomLinkCard,
   a: CustomLink,
   code: (props) => <code {...props} />,
   pre: (props) => <Pre {...props} />,
