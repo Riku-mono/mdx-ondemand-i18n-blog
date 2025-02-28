@@ -1,8 +1,9 @@
 import type { MDXComponents } from 'mdx/types';
 import { ContentComponents } from '@/contents/components/index';
 
-import TwoGridLayout from './elm/CustomTwoGridLayout';
 import Pre from './elm/CustomPre';
+import CustomLink from './elm/CustomLink';
+import TwoGridLayout from './elm/CustomTwoGridLayout';
 import TabLayout from './elm/CustomTabLayout';
 
 // 事前に提供しているコンポーネント
@@ -12,6 +13,7 @@ const defaultComponents = {
 };
 
 export const components: MDXComponents = {
+  a: CustomLink,
   code: (props) => <code {...props} />,
   pre: (props) => <Pre {...props} />,
   ...defaultComponents,
