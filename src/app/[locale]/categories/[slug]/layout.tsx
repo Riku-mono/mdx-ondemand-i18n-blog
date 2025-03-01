@@ -30,14 +30,14 @@ export default async function CategoriesLayout({ children, params }: CategoriesL
 
   return (
     <>
-      <nav className="category-nav mx-auto my-10 w-full max-w-screen-xl px-4 md:px-10">
-        <ul className="flex flex-wrap gap-2 border-b border-border pb-4">
+      <nav className="category-nav max-w-content mx-auto my-10 w-full px-4 md:px-10">
+        <ul className="flex flex-wrap gap-2 border-b pb-4">
           {categories.map((category) =>
             category.slug === slug ? (
               <li key={category.slug}>
                 <Link
                   href={`/${locale}/categories/${category.slug}`}
-                  className={`is-active rounded-md bg-card px-4 py-2 text-sm font-bold`}
+                  className={`is-active bg-card rounded-md px-4 py-2 text-sm font-bold`}
                 >
                   <span>{category.icon}</span>
                   <span>{category.title}</span>
@@ -47,7 +47,7 @@ export default async function CategoriesLayout({ children, params }: CategoriesL
               <li key={category.slug}>
                 <Link
                   href={`/${locale}/categories/${category.slug}`}
-                  className={`rounded-md bg-transparent px-4 py-2 text-sm font-bold text-muted transition-colors hover:text-neutral-100 ${category.className}`}
+                  className={`text-muted rounded-md bg-transparent px-4 py-2 text-sm font-bold transition-colors hover:text-neutral-100 ${category.className}`}
                 >
                   <span>{category.icon}</span>
                   <span>{category.title}</span>

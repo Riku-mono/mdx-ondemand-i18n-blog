@@ -26,19 +26,19 @@ export default function Pre({
 
   return (
     <div className="group relative">
+      <pre ref={preRef} {...props} className={classNames}>
+        <div className="from-card pointer-events-none absolute inset-y-0 left-0 w-4 bg-linear-to-r" />
+        {children}
+        <div className="from-card pointer-events-none absolute inset-y-0 right-0 w-8 bg-linear-to-l" />
+      </pre>
       <button
         disabled={isCopied}
         onClick={handleClickCopy}
-        className={`absolute right-2 top-2 z-10 rounded-md border border-border bg-background p-2 opacity-0 transition-opacity hover:bg-background-hover group-hover:opacity-100 ${isCopied ? 'cursor-not-allowed opacity-100' : ''}`}
+        className={`bg-background hover:bg-background-hover focus:ring-offset-card focus:ring-ring absolute top-2 right-2 z-10 rounded-md border p-2 opacity-0 transition-opacity group-hover:opacity-100 focus:opacity-100 focus:ring-2 focus:outline-hidden ${isCopied ? 'cursor-not-allowed opacity-100' : ''}`}
         title="Copy code"
       >
         {isCopied ? <Check className="h-4 w-4 text-green-400" /> : <Copy className="h-4 w-4" />}
       </button>
-      <pre ref={preRef} {...props} className={classNames}>
-        <div className="pointer-events-none absolute inset-y-0 left-0 w-4 bg-gradient-to-r from-card" />
-        {children}
-        <div className="pointer-events-none absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-card" />
-      </pre>
     </div>
   );
 }

@@ -11,8 +11,8 @@ const Header = () => {
   const pathname = usePathname();
 
   return (
-    <header className="z-50 h-16 border-b-2 border-border bg-card">
-      <div className="container mx-auto flex h-16 max-w-screen-2xl items-center justify-between px-8">
+    <header className="bg-card z-50 h-16 border-b-2">
+      <div className="max-w-wide container mx-auto flex h-16 items-center justify-between px-8">
         <a href={`/${locale}`}>
           <h1 className="text-2xl font-bold">{t('title')}</h1>
         </a>

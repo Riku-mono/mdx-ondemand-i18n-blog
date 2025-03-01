@@ -44,7 +44,7 @@ function Pagination({
   const nextPage = currentPage + 1 <= totalPages;
 
   return (
-    <div className="space-y-2 pb-8 pt-6 md:space-y-5">
+    <div className="space-y-2 pt-6 pb-8 md:space-y-5">
       <nav className="flex justify-between">
         {!prevPage && (
           <button className="cursor-auto disabled:opacity-50" disabled={!prevPage}>
@@ -112,7 +112,7 @@ export default function ListLayout({
   return (
     <PageLayout>
       <div className="space-y-4 pb-6">
-        <h1 className="md:leading-14 text-3xl font-extrabold leading-9 tracking-tight sm:text-4xl sm:leading-10 md:text-4xl">
+        <h1 className="text-3xl leading-9 font-extrabold tracking-tight sm:text-4xl sm:leading-10 md:text-4xl md:leading-14">
           {title}
         </h1>
         <div className="relative max-w-lg">
@@ -123,11 +123,11 @@ export default function ListLayout({
               type="text"
               onChange={(e) => setSearchValue(e.target.value)}
               placeholder={searchPlaceholder || 'Search articles'}
-              className="focus:border-primary-500 focus:ring-primary-500 block w-full rounded-md border border-border bg-card px-4 py-2"
+              className="focus:border-primary-500 focus:ring-primary-500 bg-card block w-full rounded-md border px-4 py-2"
             />
           </label>
           <svg
-            className="absolute right-3 top-3 h-5 w-5"
+            className="absolute top-3 right-3 h-5 w-5"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
@@ -143,14 +143,14 @@ export default function ListLayout({
         </div>
       </div>
       {displayPosts.length == 0 && (
-        <p className="text-xl font-bold leading-9 tracking-tight text-muted sm:text-xl sm:leading-4 md:text-xl md:leading-8">
+        <p className="text-muted text-xl leading-9 font-bold tracking-tight sm:text-xl sm:leading-4 md:text-xl md:leading-8">
           {notfound}
         </p>
       )}
       <ol className="post-archive">
         {Object.keys(groupedPosts).map((yearMonth) => (
           <li key={yearMonth} className="post-month-group">
-            <h2 className="post-month-title md:leading-14 mb-2 mt-4 border-b border-border pb-2 text-lg font-bold leading-9 tracking-tight sm:text-xl sm:leading-10 md:text-2xl">
+            <h2 className="post-month-title mt-4 mb-2 border-b pb-2 text-lg leading-9 font-bold tracking-tight sm:text-xl sm:leading-10 md:text-2xl md:leading-14">
               <time dateTime={`${yearMonth}`} className="bg-accent px-2 py-1">
                 {new Date(yearMonth).toLocaleString(locale, { year: 'numeric', month: 'long' })}
               </time>

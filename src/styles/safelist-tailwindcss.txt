@@ -1,0 +1,7 @@
+----- categories colors -----
+bg-teal-600
+hover:bg-teal-500
+bg-amber-500
+hover:bg-amber-400
+bg-blue-500
+hover:bg-blue-400

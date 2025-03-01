@@ -37,8 +37,8 @@ const CodeTabs = ({ children }: CodeTabsProps) => {
   const contents = Children.map(children, (child) => child);
 
   return (
-    <div className="relative mt-2 rounded-md border border-border" data-tab-layout>
-      <div className="flex border-b border-border p-2">
+    <div className="relative mt-2 rounded-md border" data-tab-layout>
+      <div className="flex border-b p-2">
         {tabs?.map((tab, i) => (
           <Tab key={i} active={activeTab === i} onClick={() => setActiveTab(i)}>
             {tab}

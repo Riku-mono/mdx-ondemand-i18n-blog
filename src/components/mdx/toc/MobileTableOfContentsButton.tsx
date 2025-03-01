@@ -21,7 +21,7 @@ export const MobileTableOfContentsButton = ({ title }: Props) => {
         {isOpen ? 'Close' : 'Open'}
       </button>
       {isOpen && (
-        <div className="absolute -right-4 w-screen rounded-b-lg bg-card p-4">
+        <div className="bg-card absolute -right-4 w-screen rounded-b-lg p-4">
           <h2 className="mb-2 pl-2 text-xl font-bold">{title}</h2>
           <TableOfContents onClick={handleClick} />
         </div>

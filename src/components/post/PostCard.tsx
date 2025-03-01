@@ -15,7 +15,7 @@ export const PostCard = ({ post, locale }: PostCardProps) => {
     : null;
 
   return (
-    <article className="fade-in-0 flex flex-row items-center gap-2 rounded-xl p-4 transition-colors hover:bg-card">
+    <article className="fade-in-0 hover:bg-card flex flex-row items-center gap-2 rounded-xl p-4 transition-colors">
       {/* <div className="bg-fg-subtle text-bg-primary flex h-full flex-col items-center justify-center rounded-full p-4 text-4xl sm:text-6xl">
         {post.icon == null ? '📄' : post.icon}
       </div> */}
@@ -32,7 +32,7 @@ export const PostCard = ({ post, locale }: PostCardProps) => {
             {post.title}
           </h2>
         </a>
-        <p className="text-fg-subtle prose text-pretty font-mono text-sm font-bold text-muted">
+        <p className="text-fg-subtle prose text-muted font-mono text-sm font-bold text-pretty">
           {post.description}
         </p>
         <footer className="text-fg-subtle flex flex-row flex-wrap gap-2 text-xs font-semibold sm:gap-4 sm:text-sm">

@@ -97,7 +97,7 @@ const LocaleCard = ({ locale, isExists, hasError, data, type }: LocaleCardProps)
     <>
       {displayContent}
       {isModalOpen && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 text-black">
+        <div className="fixed inset-0 flex items-center justify-center bg-black/50 text-black">
           <div className="relative">
             <div
               className="mt-20 max-w-3xl overflow-y-scroll rounded-md bg-white p-4"
@@ -111,7 +111,7 @@ const LocaleCard = ({ locale, isExists, hasError, data, type }: LocaleCardProps)
             </div>
             <button
               onClick={handleCloseModal}
-              className="absolute bottom-2 right-2 mt-4 rounded-md bg-gray-200 px-4 py-2 hover:bg-gray-300"
+              className="absolute right-2 bottom-2 mt-4 rounded-md bg-gray-200 px-4 py-2 hover:bg-gray-300"
             >
               閉じる
             </button>

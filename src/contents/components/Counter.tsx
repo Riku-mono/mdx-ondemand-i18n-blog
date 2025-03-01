@@ -9,11 +9,11 @@ export const Counter = () => {
     <div>
       <p className="text-xl font-bold">Counter</p>
       <div className="flex items-center gap-4">
-        <button className="rounded-md bg-card p-2" onClick={() => setCount(count - 1)}>
+        <button className="bg-card rounded-md p-2" onClick={() => setCount(count - 1)}>
           -
         </button>
         <span>{count}</span>
-        <button className="rounded-md bg-card p-2" onClick={() => setCount(count + 1)}>
+        <button className="bg-card rounded-md p-2" onClick={() => setCount(count + 1)}>
           +
         </button>
       </div>

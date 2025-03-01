@@ -1,8 +1,50 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+@plugin '@tailwindcss/typography';
+@plugin '@egoist/tailwindcss-icons';
 
-@import './rehype-pretty-code.css';
+@import './rehype-pretty-code.css' layer(utilities);
+@config '../../tailwind.config.ts';
+
+@variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* colors */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* max-width */
+  --spacing-wide: var(--breakpoint-2xl);
+  --spacing-content: var(--breakpoint-xl);
+
+  /* default ring */
+  --default-ring-width: 3px;
+  --default-ring-color: var(--ring);
+}
 
 @layer base {
   :root {
@@ -65,6 +107,13 @@
     --border: hsl(0 0% 14.9%); /* neutral-800 */
     --input: hsl(0 0% 14.9%); /* neutral-800 */
     --ring: hsl(0 0% 83.1%); /* neutral-300 */
+  }
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--border, currentColor);
   }
 }
 

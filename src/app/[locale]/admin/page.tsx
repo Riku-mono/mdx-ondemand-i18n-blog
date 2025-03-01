@@ -94,7 +94,7 @@ export default async function AdminPage({ params }: PageProps) {
   ];
 
   return (
-    <div className="mx-auto my-8 w-full max-w-screen-xl space-y-6 px-4 lg:px-10">
+    <div className="max-w-content mx-auto my-8 w-full space-y-6 px-4 lg:px-10">
       <h1 className="text-4xl font-black">管理用画面</h1>
       <section>
         <H2>ロケール一覧</H2>
