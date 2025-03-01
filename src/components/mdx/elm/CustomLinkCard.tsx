@@ -58,7 +58,7 @@ export const CustomLinkCard = async (props: Props) => {
   if (!metadata) {
     return (
       <div
-        className="inline-block h-36 w-full overflow-hidden rounded-lg border border-border bg-card transition hover:bg-card-hover"
+        className="bg-card hover:bg-card/50 @container/linkcard inline-block h-36 w-full overflow-hidden rounded-lg border transition"
         data-oembed
       >
         <a
@@ -67,9 +67,9 @@ export const CustomLinkCard = async (props: Props) => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <div className="flex min-w-0 flex-1 flex-col justify-center gap-2 px-3 md:px-5">
+          <div className="flex min-w-0 flex-1 flex-col justify-center gap-2 px-3 @xl/linkcard:p-5">
             <p className="line-clamp-2 font-bold">{url.hostname}</p>
-            <p className="line-clamp-3 text-xs text-muted">Could not fetch metadata</p>
+            <p className="text-muted line-clamp-3 text-xs">Could not fetch metadata</p>
           </div>
         </a>
       </div>
@@ -86,31 +86,31 @@ export const CustomLinkCard = async (props: Props) => {
 
   return (
     <div
-      className="inline-block w-full overflow-hidden rounded-lg border border-border bg-card transition hover:bg-card-hover"
+      className="bg-card hover:bg-card/50 focus-within:ring-primary @container/linkcard inline-block w-full overflow-hidden rounded-lg border transition focus-within:ring-2"
       data-oembed
     >
       <a
-        className="not-prose flex min-h-full flex-col flex-wrap items-center sm:flex-row"
+        className="not-prose flex min-h-full flex-col flex-wrap @xl/linkcard:flex-row @xl/linkcard:items-center"
         href={url.href}
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Link to external content"
       >
         {hasImage && (
-          <div className="w-full shrink-0 sm:order-2 sm:w-auto">
+          <div className="w-full shrink-0 @xl/linkcard:order-2 @xl/linkcard:w-auto">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={image.url}
-              className="w-full bg-background object-contain sm:h-36 sm:w-auto sm:rounded-l-lg"
+              className="bg-background w-full object-contain @xl/linkcard:h-36 @xl/linkcard:w-auto @xl/linkcard:rounded-l-lg"
               alt={image.alt ?? ''}
               style={{ aspectRatio: '1200 / 630' }}
               loading="lazy"
             />
           </div>
         )}
-        <div className="flex min-w-0 flex-1 flex-col justify-between gap-2 overflow-auto break-all p-3 md:order-1 md:p-5">
-          <p className="line-clamp-2 text-sm font-bold sm:text-base">{title}</p>
-          {description && <p className="line-clamp-3 text-xs text-muted">{description}</p>}
+        <div className="flex min-w-0 flex-1 flex-col justify-between gap-2 overflow-auto p-3 break-all @xl/linkcard:order-1 @xl/linkcard:p-5">
+          <p className="line-clamp-2 text-sm font-bold @max-sm/linkcard:text-base">{title}</p>
+          {description && <p className="text-muted line-clamp-3 text-xs">{description}</p>}
           <div className="flex flex-row items-center gap-2 text-xs">
             {favicon ? (
               // eslint-disable-next-line @next/next/no-img-element
@@ -123,7 +123,7 @@ export const CustomLinkCard = async (props: Props) => {
             ) : (
               <div className="h-4 w-4" />
             )}
-            <p className="truncate text-muted">{url.hostname}</p>
+            <p className="text-muted truncate">{url.hostname}</p>
           </div>
         </div>
       </a>
