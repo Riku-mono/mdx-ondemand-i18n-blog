@@ -6,7 +6,7 @@ export function ThemeToggle() {
   const { resolvedTheme, setTheme } = useTheme();
   return (
     <button
-      className="bg-background mt-16 rounded-md border-2 px-4 py-2 font-semibold"
+      className="bg-background hover:bg-background/50 mt-16 cursor-pointer rounded-md border-2 px-4 py-2 font-semibold"
       onClick={() => {
         setTheme(resolvedTheme === 'light' ? 'dark' : 'light');
       }}

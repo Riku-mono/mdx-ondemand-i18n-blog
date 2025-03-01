@@ -18,7 +18,7 @@ interface LocaleCardProps {
 
 const PostCard = ({ post }: PostCardProps) => {
   return (
-    <article className="flex flex-1 flex-col gap-2 rounded-xl p-4 hover:bg-gray-800">
+    <article className="hover:bg-card flex flex-1 flex-col gap-2 rounded-xl p-4">
       <div className="flex flex-row items-center justify-between gap-2">
         <h2 className="font-black">{post.title}</h2>{' '}
         <span className="text-sm">{`/${post.slug}`}</span>

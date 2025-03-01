@@ -17,13 +17,16 @@ export default {
               '&:hover': {
                 color: 'var(--color-neutral-600)',
               },
-
               code: { color: 'var(--color-neutral-400)' },
             },
-            'h1, h2, h3': {
+            'h1, h2': {
               fontWeight: '700',
               paddingBottom: 'calc(var(--spacing) * 2)',
               borderBottomWidth: '1px',
+              letterSpacing: 'var(--tracking-tight)',
+            },
+            h3: {
+              fontWeight: '700',
               letterSpacing: 'var(--tracking-tight)',
             },
             h4: {

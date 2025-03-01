@@ -151,7 +151,7 @@ export default function ListLayout({
         {Object.keys(groupedPosts).map((yearMonth) => (
           <li key={yearMonth} className="post-month-group">
             <h2 className="post-month-title mt-4 mb-2 border-b pb-2 text-lg leading-9 font-bold tracking-tight sm:text-xl sm:leading-10 md:text-2xl md:leading-14">
-              <time dateTime={`${yearMonth}`} className="bg-accent px-2 py-1">
+              <time dateTime={`${yearMonth}`} className="bg-accent rounded-sm px-2 py-1">
                 {new Date(yearMonth).toLocaleString(locale, { year: 'numeric', month: 'long' })}
               </time>
             </h2>

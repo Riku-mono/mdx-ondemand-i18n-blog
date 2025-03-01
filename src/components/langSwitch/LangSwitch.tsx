@@ -43,10 +43,11 @@ const LangSwitch = () => {
       <div>
         <button
           type="button"
-          onClick={() => setIsMenuOpen(!isMenuOpen)} // 修正：onClick ハンドラーをラムダ式で修正
-          className="inline-flex w-full justify-center rounded-md border border-transparent bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:outline-hidden"
+          aria-label="Change language menu"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          className="focus:ring-focus border-border bg-background text-primary hover:bg-background/50 inline-flex w-full items-center justify-center rounded-md border px-4 py-2 text-sm font-medium transition-all focus:ring-2 focus:ring-offset-2 focus:outline-none"
         >
-          🌐Language
+          <span className="i-lucide-languages h-6 w-6"></span>
           <svg
             className="-mr-1 ml-2 h-5 w-5"
             xmlns="http://www.w3.org/2000/svg"
@@ -64,13 +65,13 @@ const LangSwitch = () => {
       </div>
 
       {isMenuOpen && (
-        <div className="absolute right-0 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-hidden">
+        <div className="bg-background absolute right-0 mt-2 w-56 origin-top-right rounded-md border shadow-lg ring-1 ring-black/5 focus:outline-hidden">
           <div className="py-1">
             {locales.map((locale) => (
               <a
                 key={locale}
                 href={handleLocaleChange(locale)}
-                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                className="hover:bg-card block px-4 py-2 text-sm transition-colors"
                 onClick={() => handleLinkClick(locale)}
               >
                 {new Intl.DisplayNames(locale, { type: 'language' }).of(locale)}

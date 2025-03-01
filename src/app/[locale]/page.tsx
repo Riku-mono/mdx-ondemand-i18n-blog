@@ -4,6 +4,7 @@ import { PostCard } from '@/components/post/PostCard';
 import { getPostsForLocale } from '@/lib/post';
 import { LATEST_POSTS_PER_PAGE } from '@/lib/constants';
 import { PageLayout } from '@/components/layouts/PageLayout';
+import { allPages } from 'contentlayer/generated';
 
 interface PageProps {
   params: Promise<{ locale: LocaleTypes }>;
@@ -12,6 +13,7 @@ interface PageProps {
 export default async function Home({ params }: PageProps) {
   const { locale } = await params;
   const { t } = await createTranslation(locale, 'home');
+  const pages = allPages;
 
   const filteredPosts = await getPostsForLocale(locale);
 
@@ -31,13 +33,25 @@ export default async function Home({ params }: PageProps) {
           </ul>
           <a
             href={`/${locale}/posts`}
-            className="bg-card flex w-full justify-center rounded-md border-2 p-2 hover:underline"
+            className="bg-card hover:bg-card/50 flex w-full justify-center rounded-md border-2 p-2 hover:underline"
           >
             {t('viewAllPosts')}
           </a>
         </section>
         <h2 className="text-4xl font-bold">{t('contact')}</h2>
         <section className="grid w-full grid-cols-1 gap-8 rounded-xl border-2 p-4"></section>
+        <h2 className="text-4xl font-bold">{t('pages')}</h2>
+        <section className="border-border grid w-full grid-cols-1 gap-8 rounded-xl border-2 p-4">
+          <ul className="grid grid-cols-1 gap-4">
+            {pages.map((page) => (
+              <li key={page.slug}>
+                <a href={`/${locale}/${page.slug}`} className="hover:underline">
+                  {page.title}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
       </div>
     </PageLayout>
   );

@@ -20,7 +20,7 @@
 }
 
 .toc {
-  max-height: 80vh;
+  max-height: 75vh;
   overflow-y: auto;
 
   .mb-toc & {
@@ -29,6 +29,7 @@
   }
 
   .toc-list {
+    font-size: var(--text-sm);
     padding-left: 16px;
 
     .toc-list-item {

@@ -12,7 +12,7 @@ export const TableOfContents: FC<Props> = ({ onClick }) => {
     tocbot.init({
       tocSelector: '.toc',
       contentSelector: '.mdx-post', // 目次を抽出したい要素のクラス名
-      headingSelector: 'h1, h2, h3, h4, h5',
+      headingSelector: 'h2, h3, h4',
       scrollSmooth: false,
       activeLinkClass: 'is-active-link',
       includeHtml: false,
@@ -22,7 +22,7 @@ export const TableOfContents: FC<Props> = ({ onClick }) => {
     });
 
     return () => tocbot.destroy();
-  }, []);
+  }, [onClick]);
 
   return <nav className="toc" />;
 };
