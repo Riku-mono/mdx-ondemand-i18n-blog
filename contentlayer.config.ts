@@ -6,6 +6,7 @@ import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypePrettyCode from 'rehype-pretty-code';
 import { transformerNotationDiff, transformerNotationWordHighlight } from '@shikijs/transformers';
+import { rehypeUnwrapParagraph } from '@/lib/plugins/rehypeUnwrapParagraph';
 
 const root = process.cwd();
 // const isProduction = process.env.NODE_ENV === 'production';
@@ -124,8 +125,6 @@ export default makeSource({
           test: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
         },
       ],
-      // rehypeCodeTitles,
-      // [rehypePrism, { ignoreMissing: true, defaultLanguage: 'markup' }],
       [
         rehypePrettyCode,
         {
@@ -141,6 +140,7 @@ export default makeSource({
           ],
         },
       ],
+      rehypeUnwrapParagraph,
     ],
   },
 });
