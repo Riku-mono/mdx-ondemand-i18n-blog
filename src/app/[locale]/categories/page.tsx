@@ -39,7 +39,7 @@ export default async function PostsPage({ params }: PageProps) {
   return (
     <PageLayout>
       <div className="grid gap-8">
-        <h1 className="md:leading-14 text-3xl font-extrabold leading-9 tracking-tight sm:text-4xl sm:leading-10 md:text-4xl">
+        <h1 className="text-3xl leading-9 font-extrabold tracking-tight sm:text-4xl sm:leading-10 md:text-4xl md:leading-14">
           {t('categories')}
         </h1>
         <ul className="grid grid-cols-1 gap-8 lg:grid-cols-2">

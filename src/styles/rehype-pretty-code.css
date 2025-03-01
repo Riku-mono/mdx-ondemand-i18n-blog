@@ -1,9 +1,9 @@
 figure[data-rehype-pretty-code-figure] {
-  @apply mb-2 mt-2 w-full rounded-[--radius] border border-border bg-card;
+  @apply bg-card mt-2 mb-2 w-full rounded-sm border p-0.5;
 }
 
 figure[data-rehype-pretty-code-figure] pre {
-  @apply overflow-x-auto py-4;
+  @apply focus:ring-offset-card focus:ring-ring overflow-x-auto rounded-sm py-4 focus:ring-2 focus:ring-offset-2 focus:outline-hidden;
 }
 
 figure[data-rehype-pretty-code-figure] [data-line] {
@@ -11,15 +11,15 @@ figure[data-rehype-pretty-code-figure] [data-line] {
 }
 
 [data-highlighted-line] {
-  @apply !border-blue-400 !bg-blue-200/20;
+  @apply border-blue-400! bg-blue-200/20!;
 }
 
 [data-highlighted-chars] {
-  @apply rounded-md border border-border !bg-blue-200/30 px-0.5 py-[0.25];
+  @apply rounded-md border bg-blue-200/30! px-0.5 py-[0.25];
 }
 
 figcaption[data-rehype-pretty-code-title] {
-  @apply mt-0 border-b border-border px-4 py-2 text-sm text-muted;
+  @apply text-muted mt-0 border-b px-4 py-2 text-sm;
 }
 
 figcaption[data-rehype-pretty-code-title] + pre {
@@ -69,18 +69,18 @@ figure[data-rehype-pretty-code-figure] pre.has-diff [data-line].diff.remove {
   @apply bg-red-200/20 text-red-400 before:content-['-'];
 }
 
-pre[data-theme*=' '],
-code[data-theme*=' '],
-code[data-theme*=' '] span {
+pre[data-theme],
+code[data-theme],
+code[data-theme] span {
   @apply text-sm;
   color: var(--shiki-light);
   background-color: var(--shiki-light-bg);
 }
 
 .dark {
-  pre[data-theme*=' '],
-  code[data-theme*=' '],
-  code[data-theme*=' '] span {
+  pre[data-theme],
+  code[data-theme],
+  code[data-theme] span {
     @apply text-sm;
     color: var(--shiki-dark);
     background-color: var(--shiki-dark-bg);

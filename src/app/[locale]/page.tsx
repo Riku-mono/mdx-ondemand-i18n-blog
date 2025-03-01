@@ -19,9 +19,9 @@ export default async function Home({ params }: PageProps) {
     <PageLayout>
       <div className="grid gap-8">
         <h2 className="text-4xl font-bold">{t('about us')}</h2>
-        <section className="grid w-full grid-cols-1 gap-8 rounded-xl border-2 border-border p-4"></section>
+        <section className="grid w-full grid-cols-1 gap-8 rounded-xl border-2 p-4"></section>
         <h2 className="text-4xl font-bold">{t('latestPosts')}</h2>
-        <section className="grid w-full grid-cols-1 gap-8 rounded-xl border-2 border-border p-4">
+        <section className="grid w-full grid-cols-1 gap-8 rounded-xl border-2 p-4">
           <ul className="grid grid-cols-1 gap-4 lg:grid-cols-2">
             {filteredPosts.slice(0, LATEST_POSTS_PER_PAGE).map((post) => (
               <li key={post.slug}>
@@ -31,13 +31,13 @@ export default async function Home({ params }: PageProps) {
           </ul>
           <a
             href={`/${locale}/posts`}
-            className="flex w-full justify-center rounded-md border-2 border-border bg-card p-2 hover:underline"
+            className="bg-card flex w-full justify-center rounded-md border-2 p-2 hover:underline"
           >
             {t('viewAllPosts')}
           </a>
         </section>
         <h2 className="text-4xl font-bold">{t('contact')}</h2>
-        <section className="grid w-full grid-cols-1 gap-8 rounded-xl border-2 border-border p-4"></section>
+        <section className="grid w-full grid-cols-1 gap-8 rounded-xl border-2 p-4"></section>
       </div>
     </PageLayout>
   );

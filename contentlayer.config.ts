@@ -134,7 +134,7 @@ export default makeSource({
             light: 'catppuccin-latte',
           },
           keepBackground: false,
-          defaultLanguage: 'plaintext',
+          defaultLang: 'plaintext',
           transformers: [
             transformerNotationDiff({ matchAlgorithm: 'v3' }),
             transformerNotationWordHighlight({ matchAlgorithm: 'v3' }),

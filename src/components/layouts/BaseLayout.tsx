@@ -34,30 +34,30 @@ export default async function BaseLayout({ children, page, locale, isFallback }:
         </a>
         <MobileTableOfContentsButton title={t('tableOfContents')} />
       </SubHeaderLayout>
-      <header className="mx-auto max-w-screen-xl space-y-4 px-4 text-center md:space-y-8 md:px-10">
+      <header className="max-w-content mx-auto space-y-4 px-4 text-center md:space-y-8 md:px-10">
         <h1 className="text-3xl font-extrabold md:text-4xl">{title}</h1>
         {isFallback && (
-          <div className="mb-2 rounded-md border bg-red-200 p-2 text-sm text-destructive">
+          <div className="text-destructive mb-2 rounded-md border bg-red-200 p-2 text-sm">
             ※ {t('notTranslated')} {displayNames.of(locale)} {t('version')}.
           </div>
         )}
       </header>
       {layout === 'full-width' && (
-        <div className="mx-auto grid max-w-screen-xl gap-4 px-8 md:px-10">
-          <div className="mdx-post prose prose-neutral max-w-none dark:prose-invert">
+        <div className="max-w-content mx-auto grid gap-4 px-8 md:px-10">
+          <div className="mdx-post prose prose-neutral dark:prose-invert max-w-none">
             {children}
           </div>
         </div>
       )}
       {layout === 'default' && (
-        <div className="mx-auto grid max-w-screen-xl grid-cols-7 gap-4 px-8 md:px-10">
-          <div className="mdx-post prose prose-neutral col-span-7 max-w-none dark:prose-invert lg:col-span-5">
+        <div className="max-w-content mx-auto grid grid-cols-7 gap-4 px-8 md:px-10">
+          <div className="mdx-post prose prose-neutral dark:prose-invert col-span-7 max-w-none lg:col-span-5">
             {children}
           </div>
           <aside className="col-span-2 col-end-8 hidden h-full lg:flex">
             <div className="w-full">
               <div className="sticky top-10 space-y-2">
-                <div className="rounded-lg bg-card p-4">
+                <div className="bg-card rounded-lg p-4">
                   <h2 className="mb-2 text-lg font-bold">{t('tableOfContents')}</h2>
                   <TableOfContents />
                 </div>

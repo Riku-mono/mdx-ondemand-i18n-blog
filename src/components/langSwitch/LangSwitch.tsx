@@ -44,7 +44,7 @@ const LangSwitch = () => {
         <button
           type="button"
           onClick={() => setIsMenuOpen(!isMenuOpen)} // 修正：onClick ハンドラーをラムダ式で修正
-          className="inline-flex w-full justify-center rounded-md border border-transparent bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+          className="inline-flex w-full justify-center rounded-md border border-transparent bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:outline-hidden"
         >
           🌐Language
           <svg
@@ -64,7 +64,7 @@ const LangSwitch = () => {
       </div>
 
       {isMenuOpen && (
-        <div className="absolute right-0 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+        <div className="absolute right-0 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-hidden">
           <div className="py-1">
             {locales.map((locale) => (
               <a
