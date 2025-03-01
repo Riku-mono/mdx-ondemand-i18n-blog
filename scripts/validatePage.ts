@@ -79,7 +79,7 @@ function getStagedMdxFiles(): string[] {
     return execSync('git diff --cached --name-only', { encoding: 'utf-8' })
       .toString()
       .split('\n')
-      .filter((file) => file.endsWith('.mdx'));
+      .filter((file) => file.startsWith('src/contents/pages/') && file.endsWith('.mdx'));
   } catch (error) {
     console.error('❌ Failed to get staged files:', error);
     return [];
