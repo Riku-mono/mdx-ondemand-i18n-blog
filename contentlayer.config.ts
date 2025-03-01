@@ -1,6 +1,7 @@
 import { ComputedFields, defineDocumentType, makeSource } from 'contentlayer2/source-files';
 import siteMetadata from './src/contents/siteMetadata';
 import remarkGfm from 'remark-gfm';
+import { remarkOEmbed, youTubeTransformer, oEmbedTransformer } from '@/lib/plugins/remarkOEmbed';
 import { remarkLinkCard } from '@/lib/plugins/remarkLinkCard';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
@@ -107,7 +108,11 @@ export default makeSource({
   contentDirExclude: ['siteMetadata.ts', 'siteLocaleMetadata.ts', 'components/**/*'],
   mdx: {
     cwd: root,
-    remarkPlugins: [remarkGfm, remarkLinkCard],
+    remarkPlugins: [
+      remarkGfm,
+      [remarkOEmbed, { transformers: [youTubeTransformer, oEmbedTransformer] }],
+      remarkLinkCard,
+    ],
     rehypePlugins: [
       rehypeSlug,
       [

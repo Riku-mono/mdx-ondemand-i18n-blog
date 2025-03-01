@@ -14,8 +14,9 @@ const getMetadata = async (href: string): Promise<Metadata | undefined> => {
   try {
     const url = new URL(href);
     return await unfurl(url.href);
-  } catch (error) {
-    console.warn('Failed to fetch metadata for link:', href, error);
+  } catch (e) {
+    if (e === undefined) return undefined;
+    console.warn('⚠️ Failed to fetch metadata for link:', href);
     return undefined;
   }
 };
@@ -58,7 +59,7 @@ export const CustomLinkCard = async (props: Props) => {
   if (!metadata) {
     return (
       <div
-        className="bg-card hover:bg-card/50 @container/linkcard inline-block h-36 w-full overflow-hidden rounded-lg border transition"
+        className="bg-card hover:bg-card/50 focus-within:ring-ring @container/linkcard inline-block h-36 w-full overflow-hidden rounded-lg border transition focus-within:ring-2"
         data-oembed
       >
         <a
@@ -86,7 +87,7 @@ export const CustomLinkCard = async (props: Props) => {
 
   return (
     <div
-      className="bg-card hover:bg-card/50 focus-within:ring-primary @container/linkcard inline-block w-full overflow-hidden rounded-lg border transition focus-within:ring-2"
+      className="bg-card hover:bg-card/50 focus-within:ring-ring @container/linkcard inline-block w-full overflow-hidden rounded-lg border transition focus-within:ring-2"
       data-oembed
     >
       <a
